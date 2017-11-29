@@ -9,7 +9,8 @@ var scroller = scrollama();
 // generic window resize listener event
 function handleResize() {
 	// 1. update height of step elements
-	var stepWidth = Math.floor(window.innerWidth/3);
+	var stepWidth = Math.floor(window.innerWidth/2);
+	console.log(stepWidth);
 	step.style('width', stepWidth + 'px');
 	// 2. update width/height of graphic element
 	var bodyWidth = d3.select('body').node().offsetWidth;
@@ -25,7 +26,7 @@ function handleResize() {
 	var chartWidth = graphic.node().offsetWidth - textWidth - chartMargin;
 	chart
 		.style('width', chartWidth + 'px')
-		.style('height', Math.floor(window.innerHeight / 2) + 'px');
+		.style('height', Math.floor(window.innerHeight/2) + 'px');
 	// 3. tell scrollama to update new element dimensions
 	scroller.resize();
 }
@@ -38,13 +39,14 @@ function handleStepEnter(response) {
 	})
 	// update graphic based on step
 	d3.csv('data/jumps.csv', function(data) {
-		chart.select('p').text('the ' + data[response.index].jump)
+		chart.select('h3').text('the ' + data[response.index].jump)
 		console.log(chart.select('p'))
 		console.log(chart.select('.type'));
 		chart.select('.type').text(data[response.index].type);
 		chart.select('.takeoff').text(data[response.index].takeoff);
 		chart.select('.landing').text(data[response.index].landing);
 		chart.select('.direction').text(data[response.index].direction);
+		chart.select('img').attr('src', data[response.index].image);
 
 	});
 	

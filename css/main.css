@@ -38,7 +38,6 @@ body {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: .2em;
-    font-family: 'Atlas Grotesk Web';
     text-align: center;
     color: white;
     line-height: 1;
@@ -67,6 +66,8 @@ h2 {
 	text-transform: capitalize;
 }
 
+
+
 .intro-subhead {
   padding: 0 1rem;
   text-align: center;
@@ -74,7 +75,6 @@ h2 {
   font-size: 1.3rem;
   font-weight: 400;
   margin: 0px;
-  font-family: 'Publico Text Web';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
@@ -130,7 +130,7 @@ h2 {
 
 .scroll__text {
   padding: 0 1rem;
-  max-width: 50%;
+  max-width: 720px;
 }
 
 .step {
@@ -144,30 +144,60 @@ h2 {
 }
 
 .jumpgif {
-	width: 100%;
+	max-width: 100%;
 	height: auto;
+	display: block;
+    margin: 0 auto;
 }
 
-table {
-	margin: 0 auto;
+/*table {
+	 border-collapse: separate;
+	margin: 0.5rem auto;
+    width: 100%;
+    max-width: 25rem;
+    table-layout: fixed;
+    font-size: .85rem
 }
 table tr {
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px #eee;
 
+}*/
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+table tr.first
+{
+    border-bottom:1px solid #eee;
+}
+
+
+table tbody {
+	border-collapse: separate;
 }
 
 .jump-name {
 	text-align: center;
-	font-weight: 400;
     text-transform: uppercase;
+	font-weight: bold;
+	font-size: 2.5rem;
+	text-transform: capitalize;
+}
+
+img.jump-diagram {
+	width: 75%;
+	display: block;
+	margin: 0 auto;
+
 }
 tr td {
-	width: 50%;
+	font-size: 1rem;
+	padding: 0.5rem;
 }
 td.label {
-	text-align: right;
 }
 
 td.value {
-	text-align: left;
 }

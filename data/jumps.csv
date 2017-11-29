@@ -1,7 +1,7 @@
-jump,type,takeoff,landing,direction
-Toe Loop,toe,right back outside edge,same back outside edge,backward
-Flip,toe,left back inside edge,opposite back outside edge,backward
-Lutz,toe,left back outside edge,opposite back outside edge,backward
-Salchow,edge,left back inside edge,opposite back outside edge,backward
-Loop,edge,right back outside edge,same back outside edge,backward
-Axel,edge,left forward outside edge,same back outside edge,forward
+jump,type,takeoff,landing,direction,image
+Toe Loop,toe,right back outside edge,same back outside edge,backward,images/toeloopdiagram.jpg
+Flip,toe,left back inside edge,opposite back outside edge,backward,images/flipdiagram.jpg
+Lutz,toe,left back outside edge,opposite back outside edge,backward,images/lutzdiagram.jpg
+Salchow,edge,left back inside edge,opposite back outside edge,backward,images/salchowdiagram.jpg
+Loop,edge,right back outside edge,same back outside edge,backward,images/loopdiagram.jpg
+Axel,edge,left forward outside edge,opposite back outside edge,forward,images/axeldiagram.jpg
