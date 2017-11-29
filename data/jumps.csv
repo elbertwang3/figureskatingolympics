@@ -1,0 +1,7 @@
+jump,type,takeoff,landing,direction
+Toe Loop,toe,right back outside edge,same back outside edge,backward
+Flip,toe,left back inside edge,opposite back outside edge,backward
+Lutz,toe,left back outside edge,opposite back outside edge,backward
+Salchow,edge,left back inside edge,opposite back outside edge,backward
+Loop,edge,right back outside edge,same back outside edge,backward
+Axel,edge,left forward outside edge,same back outside edge,forward

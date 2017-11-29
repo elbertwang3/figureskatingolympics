@@ -20,16 +20,73 @@
   				<p class="intro-byline tk-atlas">By Elbert Wang</p>
   			</div>
   			<div class="jump-diagram">
+  				<h2>Identifying the Jumps</h2>
+  				<section id='scroll'>
+					<!--  graphic container  -->
+					<div class='scroll__graphic'>
+						<!--   actual graphic/chart   -->
+						<div class='chart'>
+							<p class="jump-name">0</p>
+							<table class="jump-info">
+								<tbody>
+									<tr>
+										<td class="label">Type</td>
+										<td class="type value"></td>
+									</tr>
+									<tr>
+										<td class="label">Takeoff</td>
+										<td class="takeoff value"></td>
+									</tr>
+									<tr>
+										<td class="label">Landing</td>
+										<td class="landing value"></td>
+									</tr>
+									<tr>
+										<td class="label">Direction</td>
+										<td class="direction value"></td>
+									</tr>
+								</tbody>
+							</table>
+
+									
+
+						</div>
+					</div>
+
+					<!--  step/text container  -->
+					<div class='scroll__text'>
+						<div class='step' data-step='1'>
+							<img class="jumpgif" src="images/toeloop.gif">
+						</div>
+						<div class='step' data-step='2'>
+							<img class="jumpgif" src="images/flip.gif">
+						</div>
+						<div class='step' data-step='lutz'>
+							<img class="jumpgif" src="images/lutz.gif">
+						</div>
+						<div class='step' data-step='4'>
+							<img class="jumpgif" src="images/salchow.gif">
+						</div>
+						<div class='step' data-step='5'>
+							<img class="jumpgif" src="images/loop.gif">
+						</div>
+						<div class='step' data-step='6'>
+							<img class="jumpgif" src="images/axel.gif">
+						</div>
+					</div>
+				</section>
   			</div>
   			<div class="timeline">
   			</div>
-  			
 
 
-  			<p>
+
+  		
   		</main>
 
 		<script src="https://d3js.org/d3.v4.js"></script>
+		<script src="js/scrollama.min.js"></script>
+		<script src="js/jumpscroll.js"></script>
 	</body>
 </html>
 

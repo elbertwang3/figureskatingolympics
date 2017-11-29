@@ -10,12 +10,12 @@ body {
     padding: 0;
 }
 
-.loaded-canela .tk-canela {
+/*.loaded-canela .tk-canela {
     font-family: 'Canela Web',Georgia,Times,serif
 }
 .loaded-atlas .tk-atlas {
     font-family: 'Atlas Grotesk Web',Helvetica,Arial,sans-serif;
-}
+}*/
 
 .intro {
   /* margin: 5rem auto 9rem; */
@@ -60,6 +60,13 @@ body {
   color: white;
 }
 
+h2 {
+	text-align: center;
+	font-weight: bold;
+	font-size: 3rem;
+	text-transform: capitalize;
+}
+
 .intro-subhead {
   padding: 0 1rem;
   text-align: center;
@@ -86,4 +93,81 @@ body {
   right: 0px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing:grayscale;
+}
+
+#scroll {
+  position: relative;
+}
+
+.scroll__graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  width: 100%;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.scroll__graphic.is-fixed {
+  position: fixed;
+}
+
+.scroll__graphic.is-bottom {
+  bottom: 0;
+  top: auto;
+}
+
+.scroll__graphic .chart {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.scroll__text {
+  padding: 0 1rem;
+  max-width: 50%;
+}
+
+.step {
+  opacity: 0;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.step.is-active {
+  opacity: 1;
+}
+
+.jumpgif {
+	width: 100%;
+	height: auto;
+}
+
+table {
+	margin: 0 auto;
+}
+table tr {
+    border-bottom: 1px solid #000000;
+
+}
+
+.jump-name {
+	text-align: center;
+	font-weight: 400;
+    text-transform: uppercase;
+}
+tr td {
+	width: 50%;
+}
+td.label {
+	text-align: right;
+}
+
+td.value {
+	text-align: left;
 }

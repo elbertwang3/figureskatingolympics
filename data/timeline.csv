@@ -1,9 +1,29 @@
-skater,country,first,year,competition
-Bruce Mapes,USA,single toe loop,1920,N/A
-Thomas Litz,USA,1964,triple toe loop,1964,World Championships
-Jozef Sabovcik,Czechoslovakia,quadruple toe loop (attempt),1986,Europeans
-Kurt Browning,Canada,quadruple toe loop,1988,World Championships
-Ulrich Salchow
-Axel Paulsen,Norway,single axel,1882,N/A
-Dick Button,USA,,double axel,1948,Olympic Games
-Vern Taylor,,triple axel,1978,World Championships
+skater,gender,country,first,year,competition
+Bruce Mapes,male,USA,single toe loop,1920,N/A
+Thomas Litz,male,USA,1964,triple toe loop,1964,World Championships
+Jozef Sabovcik,male,Czechoslovakia,quadruple toe loop (attempt),1986,European Championships
+Kurt Browning,male,Canada,quadruple toe loop,1988,World Championships
+Axel Paulsen,male,Norway,single axel,1882,N/A
+Dick Button,male,USA,,double axel,1948,Olympic Games
+Vern Taylor,male,Canada,triple axel,1978,World Championships
+Carol Heiss,female,USA,double axel,1953,N/A
+Midori Ito,female,Japan,triple axel,1988,NHK Trophy
+Werner Rittberger,male,Germany,single loop,1910,N/A
+Karl Schafer,male,Austria,double loop,1925,N/A
+Dick Button,male,USA,triple loop,1952,Olympic Games
+Yuzuru Hanyu,male,Japan,quadruple loop,2016,Autumn Classic International
+Alois Lutz,male,Austria,single lutz,1913,N/A
+Karl Schafer,male,Austria,double lutz,1925,N/A
+Alena Vrzanova,female,Czechoslovakia,double lutz,1949,World Championships
+Donald Jackson,male,Canada,triple lutz,1962,World Championships
+Denise Biellman,female,Switzerland,triple lutz,1978,European Championships
+Brandon Mroz,male,USA,quadruple lutz,2011,Colorado Springs Invitational
+Ulrich Salchow,male,Sweden,single salchow,1909,N/A
+Gillis Grafstrom,male,Sweden,double salchow,1926,N/A
+Ronnie Robertson,male,USA,triple salchow,1955,World Championships
+Timothy Goebel,male,USA,quadruple salchow,1998,Junior Grand Prix Final
+Theresa Weld,female,USA,single salchow,1920,Olympic Games
+Cecilia Colledge,female,Great Britain,double salchow,1936,European Championships
+Petra Burka,female,Canada,triple salchow,1962,Canadian Championships
+Katarina Witt,female,Germany,triple flip,1981,European Championships
+Shoma Uno,male,Japan,quadruple flip,2016,Team Challegen Cup
