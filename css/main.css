@@ -1,0 +1,89 @@
+
+
+body {
+    font-feature-settings: 'kern' 1,'onum' 1,'liga' 0,'tnum' 1;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    color: #2a2a2a;
+    font-size: 18px;
+     margin: 0;
+    padding: 0;
+}
+
+.loaded-canela .tk-canela {
+    font-family: 'Canela Web',Georgia,Times,serif
+}
+.loaded-atlas .tk-atlas {
+    font-family: 'Atlas Grotesk Web',Helvetica,Arial,sans-serif;
+}
+
+.intro {
+  /* margin: 5rem auto 9rem; */
+  background: rgba(0, 0, 0, 0.9);
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.smaller-head {
+
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-family: 'Atlas Grotesk Web';
+    text-align: center;
+    color: white;
+    line-height: 1;
+    margin-bottom: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+.intro-headline {
+  max-width: 50rem;
+  margin: 0 auto 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+  line-height: 1;
+  font-weight: bold;
+  font-size: 8rem;
+  font-weight: 100;
+  text-transform: capitalize;
+  color: white;
+}
+
+.intro-subhead {
+  padding: 0 1rem;
+  text-align: center;
+  color: #f33;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0px;
+  font-family: 'Publico Text Web';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.intro-byline {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+  position: absolute;
+  bottom: 0px;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 400;
+  left: 0px;
+  right: 0px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
