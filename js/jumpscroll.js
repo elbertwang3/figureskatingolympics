@@ -10,19 +10,16 @@ var scroller = scrollama();
 function handleResize() {
 	// 1. update height of step elements
 	var stepWidth = Math.floor(window.innerWidth/2);
-	console.log(stepWidth);
 	step.style('width', stepWidth + 'px');
 	// 2. update width/height of graphic element
 	var bodyWidth = d3.select('body').node().offsetWidth;
 	graphic
 		.style('width', bodyWidth + 'px')
 		.style('height', window.innerHeight + 'px');
-	console.log(bodyWidth);
-	console.log(graphic.node().offsetWidth)
+
 
 	var chartMargin = 32;
 	var textWidth = text.node().offsetWidth;
-		console.log(textWidth);
 	var chartWidth = graphic.node().offsetWidth - textWidth - chartMargin;
 	chart
 		.style('width', chartWidth + 'px')
@@ -39,14 +36,8 @@ function handleStepEnter(response) {
 	})
 	// update graphic based on step
 	d3.csv('data/jumps.csv', function(data) {
-		chart.select('h3').text('the ' + data[response.index].jump)
-		console.log(chart.select('p'))
-		console.log(chart.select('.type'));
-		chart.select('.type').text(data[response.index].type);
-		chart.select('.takeoff').text(data[response.index].takeoff);
-		chart.select('.landing').text(data[response.index].landing);
-		chart.select('.direction').text(data[response.index].direction);
-		chart.select('img').attr('src', data[response.index].image);
+		
+		chart.select('img').attr('src', data[response.index].gif);
 
 	});
 	
@@ -56,6 +47,7 @@ function handleContainerEnter(response) {
 	// sticky the graphic (old school)
 	graphic.classed('is-fixed', true);
 	graphic.classed('is-bottom', false);
+	
 }
 function handleContainerExit(response) {
 	// response = { direction }
@@ -74,12 +66,26 @@ function init() {
 		graphic: '.scroll__graphic',
 		text: '.scroll__text',
 		step: '.scroll__text .step',
-		debug: true,
+		/*debug: true,*/
 	})
 		.onStepEnter(handleStepEnter)
 		.onContainerEnter(handleContainerEnter)
 		.onContainerExit(handleContainerExit);
 	// setup resize event
+	d3.csv('data/jumps.csv', function(data) {
+		console.log(data);
+		for (var i = 1; i <= 6; i++) {
+			currDiv = d3.select("[data-step='" + i + "']")
+			console.log(currDiv);
+			currDiv.select('h3').text('the ' + data[i-1].jump)
+			currDiv.select('.type').text(data[i-1].type);
+			currDiv.select('.takeoff').text(data[i-1].takeoff);
+			currDiv.select('.landing').text(data[i-1].landing);
+			currDiv.select('.direction').text(data[i-1].direction);
+			currDiv.select('img').attr('src', data[i-1].image);
+		}
+	})
+		
 	window.addEventListener('resize', handleResize);
 }
 // kick things off

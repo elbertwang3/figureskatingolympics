@@ -37,6 +37,7 @@ body {
     font-size: 1.1rem;
     font-weight: 400;
     text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: .2em;
     text-align: center;
     color: white;
@@ -68,23 +69,14 @@ h2 {
 
 
 
-.intro-subhead {
-  padding: 0 1rem;
-  text-align: center;
-  color: #f33;
-  font-size: 1.3rem;
-  font-weight: 400;
-  margin: 0px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
 
 .intro-byline {
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 1.5;
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 3rem;
   padding: 0 1rem;
+      font-family: 'Roboto', sans-serif;
   position: absolute;
   bottom: 0px;
   color: rgba(255, 255, 255, 0.25);
@@ -120,6 +112,7 @@ h2 {
 }
 
 .scroll__graphic .chart {
+	left: 50%;
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -129,8 +122,10 @@ h2 {
 }
 
 .scroll__text {
+
   padding: 0 1rem;
   max-width: 720px;
+
 }
 
 .step {
@@ -166,11 +161,13 @@ table tr {
 table {
     border-collapse: collapse;
     margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 table tr.first
 {
     border-bottom:1px solid #eee;
+    font-weight: 900;
 }
 
 
@@ -184,6 +181,13 @@ table tbody {
 	font-weight: bold;
 	font-size: 2.5rem;
 	text-transform: capitalize;
+}
+
+img.jump-gif {
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+
 }
 
 img.jump-diagram {
@@ -200,4 +204,9 @@ td.label {
 }
 
 td.value {
+}
+
+.timeline svg {
+	display: block;
+	margin: 0 auto;
 }

@@ -1,11 +1,11 @@
 skater,gender,country,first,year,competition
 Bruce Mapes,male,USA,single toe loop,1920,N/A
-Thomas Litz,male,USA,1964,triple toe loop,1964,World Championships
+Thomas Litz,male,USA,triple toe loop,1964,World Championships
 Jozef Sabovcik,male,Czechoslovakia,quadruple toe loop (attempt),1986,European Championships
 Kurt Browning,male,Canada,quadruple toe loop,1988,World Championships
 Axel Paulsen,male,Norway,single axel,1882,N/A
-Dick Button,male,USA,,double axel,1948,Olympic Games
-Vern Taylor,male,Canada,triple axel,1978,World Championships
+Dick Button,male,USA,double axel,1948,Olympic Games
+Vern Taylor,male,Canada,triple axel,1978,World Championships	
 Carol Heiss,female,USA,double axel,1953,N/A
 Midori Ito,female,Japan,triple axel,1988,NHK Trophy
 Werner Rittberger,male,Germany,single loop,1910,N/A
@@ -26,4 +26,4 @@ Theresa Weld,female,USA,single salchow,1920,Olympic Games
 Cecilia Colledge,female,Great Britain,double salchow,1936,European Championships
 Petra Burka,female,Canada,triple salchow,1962,Canadian Championships
 Katarina Witt,female,Germany,triple flip,1981,European Championships
-Shoma Uno,male,Japan,quadruple flip,2016,Team Challegen Cup
+Shoma Uno,male,Japan,quadruple flip,2016,Team Challenge Cup
