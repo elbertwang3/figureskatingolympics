@@ -5,7 +5,7 @@ d3.queue()
   
    
 
-function ready(mens, womens) {
+function ready(error,mens, womens) {
 	console.log("hi");
 	console.log(mens);
 	console.log(womens);

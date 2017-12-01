@@ -65,7 +65,14 @@ d3.csv('data/timeline.csv', function(data) {
     		if (d.skater == "Shoma Uno") {
     		
     			return timeScale("2017");
-    		} else {
+    		} else if (d.skater == "Vern Taylor") {
+    			return timeScale("1979");
+    		} else if (d.first == "double loop") {
+    			return timeScale("1924");
+    		} else if (d.skater == "Donald Jackson") {
+    			return timeScale("1963");
+    		}
+    			else {
     			return timeScale(d.year); }
     		})
     		
@@ -193,7 +200,7 @@ d3.csv('data/timeline.csv', function(data) {
             /*if(viewportWidth < 450 || mobile){
               return "250px";
             }*/
-            return 3714 +"px"
+            return 3480+"px"
           })
           .style("left",function(d){
             /*if(viewportWidth < 450 || mobile){
