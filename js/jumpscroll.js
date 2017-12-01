@@ -9,8 +9,10 @@ var scroller = scrollama();
 // generic window resize listener event
 function handleResize() {
 	// 1. update height of step elements
-	var stepWidth = Math.floor(window.innerWidth/2);
+	var stepWidth = Math.floor(window.innerWidth/2.5);
 	step.style('width', stepWidth + 'px');
+	var stepHeight = Math.floor(window.innerHeight/1.4);
+	step.style('height', stepHeight + 'px');
 	// 2. update width/height of graphic element
 	var bodyWidth = d3.select('body').node().offsetWidth;
 	graphic
@@ -73,10 +75,8 @@ function init() {
 		.onContainerExit(handleContainerExit);
 	// setup resize event
 	d3.csv('data/jumps.csv', function(data) {
-		console.log(data);
 		for (var i = 1; i <= 6; i++) {
 			currDiv = d3.select("[data-step='" + i + "']")
-			console.log(currDiv);
 			currDiv.select('h3').text('the ' + data[i-1].jump)
 			currDiv.select('.type').text(data[i-1].type);
 			currDiv.select('.takeoff').text(data[i-1].takeoff);

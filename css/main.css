@@ -132,6 +132,7 @@ h2 {
   opacity: 0;
   padding: 1rem;
   margin: 0 auto;
+  text-align: center;
 }
 
 .step.is-active {
@@ -191,7 +192,7 @@ img.jump-gif {
 }
 
 img.jump-diagram {
-	width: 75%;
+	width: 100%;
 	display: block;
 	margin: 0 auto;
 
@@ -210,3 +211,53 @@ td.value {
 	display: block;
 	margin: 0 auto;
 }
+
+.step-container {
+	margin: 0 auto;
+}
+
+
+.timeline-tool-tip {
+    position: absolute;
+    font-family: 'Roboto';
+    font-size: 14px;
+    z-index: 1000000000;
+    text-align: left;
+    width: auto;
+    color: #353535;
+    visibility: hidden;
+    pointer-events: all;
+}
+.skater-name {
+    text-align: left;
+}
+
+.timeline .skater .item {
+	fill: #ccc;
+}
+
+.timeline .skater .item.hover {
+	fill: #999;
+}
+
+
+.timeline .skater .item.is-playing {
+	fill: #ff0900;
+}
+
+.timeline-tool-tip .play {
+	color: #535353;
+	text-transform: uppercase;
+	font-size: 10px;
+	font-weight:900;
+}
+
+.timeline-tool-tip .skater-time {
+	color: #999999;
+	text-transform: uppercase;
+}
+
+.timeline-tool-tip .skater-name {
+	font-weight: 700;
+}
+
