@@ -1,29 +1,28 @@
-skater,gender,country,first,year,competition
-Bruce Mapes,male,USA,single toe loop,1921,N/A
-Thomas Litz,male,USA,triple toe loop,1964,World Championships
-Jozef Sabovcik,male,Czechoslovakia,quadruple toe loop (attempt),1986,European Championships
-Kurt Browning,male,Canada,quadruple toe loop,1988,World Championships
-Axel Paulsen,male,Norway,single axel,1882,N/A
-Dick Button,male,USA,double axel,1948,Olympic Games
-Vern Taylor,male,Canada,triple axel,1978,World Championships	
-Carol Heiss,female,USA,double axel,1953,N/A
-Midori Ito,female,Japan,triple axel,1988,NHK Trophy
-Werner Rittberger,male,Germany,single loop,1910,N/A
-Karl Schafer,male,Austria,double loop,1925,N/A
-Dick Button,male,USA,triple loop,1952,Olympic Games
-Yuzuru Hanyu,male,Japan,quadruple loop,2016,Autumn Classic International
+skater,gender,country,first,year,competition,url,
+Bruce Mapes,male,USA,single toe loop,1921,N/A,
+Thomas Litz,male,USA,triple toe loop,1964,World Championships,https://www.youtube.com/embed/wukaVW_5ktk
+Kurt Browning,male,Canada,quadruple toe loop,1988,World Championships,https://youtube.com/embed/kxpCu8wRv14?start=175
+Axel Paulsen,male,Norway,single axel,1882,N/A,https://youtube.com/embed/xNH49SjoWjw?start=207
+Dick Button,male,USA,double axel,1948,Olympic Games,https://youtube.com/embed/MYxOXmFkdYE?start=112
+Vern Taylor,male,Canada,triple axel,1978,World Championships,https://youtube.com/embed/UilAARymnSs?t=52
+Carol Heiss,female,USA,double axel,1953,N/A,https://www.youtube.com/embed/jpKNkVpDORs
+Midori Ito,female,Japan,triple axel,1988,NHK Trophy,https://youtube.com/embed/kEqxigccU1s?start=74
+Werner Rittberger,male,Germany,single loop,1910,N/A,
+Karl Schafer,male,Austria,double loop,1925,N/A,https://www.youtube.com/embed/r4SV_erT6h8
+Dick Button,male,USA,triple loop,1952,Olympic Games,https://youtube.com/embed/MYxOXmFkdYE?start=135
+Yuzuru Hanyu,male,Japan,quadruple loop,2016,Autumn Classic International,https://youtube.com/embed/8LnJNXNYLFo?start=52
 Alois Lutz,male,Austria,single lutz,1913,N/A
-Karl Schafer,male,Austria,double lutz,1925,N/A
-Alena Vrzanova,female,Czechoslovakia,double lutz,1949,World Championships
-Donald Jackson,male,Canada,triple lutz,1962,World Championships
-Denise Biellman,female,Switzerland,triple lutz,1978,European Championships
-Brandon Mroz,male,USA,quadruple lutz,2011,Colorado Springs Invitational
-Ulrich Salchow,male,Sweden,single salchow,1909,N/A
-Gillis Grafstrom,male,Sweden,double salchow,1926,N/A
-Ronnie Robertson,male,USA,triple salchow,1955,World Championships
-Timothy Goebel,male,USA,quadruple salchow,1998,Junior Grand Prix Final
-Theresa Weld,female,USA,single salchow,1920,Olympic Games
-Cecilia Colledge,female,United Kingdom,double salchow,1936,European Championships
-Petra Burka,female,Canada,triple salchow,1962,Canadian Championships
-Katarina Witt,female,East Germany,triple flip,1981,European Championships
-Shoma Uno,male,Japan,quadruple flip,2016,Team Challenge Cup
+Karl Schafer,male,Austria,double lutz,1925,N/A,https://www.youtube.com/embed/r4SV_erT6h8
+Barbara Ann Scott,female,USA,double lutz,1942,N/A,https://www.youtube.com/embed/V4mTpb-txhI
+Donald Jackson,male,Canada,triple lutz,1962,World Championships,https://youtube.com/embed/Alrsemq_mzQ?start=32
+Denise Biellman,female,Switzerland,triple lutz,1978,European Championships,https://www.youtube.com/embed/xJRlnZ8qk98
+Brandon Mroz,male,USA,quadruple lutz,2011,Colorado Springs Invitational,https://www.youtube.com/embed/CMQ8qNTG-jY
+Ulrich Salchow,male,Sweden,single salchow,1909,N/A,https://youtube.com/embed/k-vqyLXiYLk?t=5
+Gillis Grafstrom,male,Sweden,double salchow,1926,N/A,https://www.youtube.com/embed/edoDYoMoQqA
+Ronnie Robertson,male,USA,triple salchow,1955,World Championships,https://www.youtube.com/embed/oF9x3SvU85U
+Timothy Goebel,male,USA,quadruple salchow,1998,Junior Grand Prix Final,https://www.youtube.com/embed/qKVmwcM_ssg
+Theresa Weld,female,USA,single salchow,1920,Olympic Games,https://www.youtube.com/embed/OoJ77_SiP_A
+Cecilia Colledge,female,United Kingdom,double salchow,1936,European Championships,https://www.youtube.com/embed/IY8nYJ2k-uE
+Petra Burka,female,Canada,triple salchow,1962,Canadian Championships,https://www.youtube.com/embed/SBt_86YRuvk
+Katarina Witt,female,East Germany,triple flip,1981,European Championships,https://youtube.com/embed/8hLuhzIyma0?start=68
+Shoma Uno,male,Japan,quadruple flip,2016,Team Challenge Cup,https://youtube.com/embed/nmOBgXZy_Vs?start=41

@@ -261,3 +261,38 @@ td.value {
 	font-weight: 700;
 }
 
+.video-container {
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+	font-family: 'Roboto';
+	margin-bottom: 0px;
+
+}
+
+.video {
+	margin-bottom: 15px;
+}
+.year-label {
+	color: #999999;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+.desc-label {
+
+}
+
+.name-label {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.y-axis-lines {
+
+    stroke: #d9d9d9;
+    stroke-width: 1px;
+    stroke-dasharray: 2px 2px;
+    shape-rendering: crispEdges;
+
+}
