@@ -140,6 +140,7 @@ d3.csv('data/timeline.csv', function(data) {
     	.attr("font-family", "Roboto")
     	.attr("font-size", "12px")
 
+
     yticks
     	.selectAll(".tick")
     	.data(["single", "double", "triple", "quadruple"])
