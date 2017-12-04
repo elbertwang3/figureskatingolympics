@@ -227,6 +227,10 @@ td.value {
     color: #353535;
     visibility: hidden;
     pointer-events: all;
+    border: 1px solid rgba(193, 193, 193, 0.8);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+    background: white;
+    padding: 0.75em;
 }
 .skater-name {
     text-align: left;
@@ -238,6 +242,7 @@ td.value {
 
 .timeline .skater .item.hover {
 	fill: #999;
+	cursor: pointer;
 }
 
 
@@ -305,14 +310,14 @@ td.value {
 
 }
 
-.individual-jump {
+.jump-sequence .individual-jump {
 	fill: #ccc;
 	stroke:#fff;
 }
 
-.individual-jump.hover {
+.jump-sequence.hover .individual-jump {
 	fill: #999;
-	stroke: #000;
+	stroke: #333;
 	cursor: pointer;
 }
 
@@ -390,4 +395,21 @@ td.value {
 	display: block;
 	text-align:center;
 	
+}
+.jump-sequence .connector {
+    stroke: #d8d8d8;
+    stroke-width: 1.5px;
+    shape-rendering: crispEdges;
+    
+}
+
+.jump-sequence.hover .connector {
+	stroke: #333;
+	cursor: pointer;
+	
+}
+
+.jumps {
+	position: relative;
+	top: 2rem;
 }

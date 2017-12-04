@@ -58,7 +58,7 @@ function ready(error,mens, womens) {
 		       	
 		    }
 		}
-		console.log(numquads);
+		//console.log(numquads);
 		header = currentdiv.append("div")
 			.attr("class","header")
 			
@@ -179,21 +179,8 @@ function ready(error,mens, womens) {
 			.append("g")
 			.attr("class", "jump-sequence")
 			.attr("transform", function(d,i) { return "translate(" + mensXScale(i) + ",0)";})
-
-
-
-		
-		jumpsequence.selectAll("circle")
-			.data(function(d) { return d.split("+");})
-			.enter()
-			.append("circle")
-			.attr("r", 5)
-			.attr("class", "individual-jump")
-			.attr("cy", function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d)))})
-
-			.style("stroke-width", 1)
 			.on('mouseover',function(d) {
-					d3.select(this).classed("hover", true);
+				d3.select(this).classed("hover", true);
 			})
 			.on('mouseout', function(d) {
 				d3.select(this).classed("hover", false);
@@ -218,10 +205,25 @@ function ready(error,mens, womens) {
 			})
 			.enter()
 			.append("line")
-			/*.attr('x1', 0)
-			.attr('y1', function(d) { })
+			.attr("class", "connector")
+			.attr('x1', 0)
+			.attr('y1', function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d.split("+")[0])))})
 			.attr('x2', 0)
-			.attr('y2', function(d) { });*/
+			.attr('y2', function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d.split("+")[1])))})
+
+
+		
+		jumpsequence.selectAll("circle")
+			.data(function(d) { return d.split("+");})
+			.enter()
+			.append("circle")
+			.attr("r", 5)
+			.attr("class", "individual-jump")
+			.attr("cy", function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d)))})
+
+			.style("stroke-width", 1)
+			
+		
 						
 
 		programlabels = currentsvg.append("g")

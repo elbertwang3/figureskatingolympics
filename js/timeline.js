@@ -124,7 +124,8 @@ d3.csv('data/timeline.csv', function(data) {
 		 	d3.select(this).classed("hover", false);
 		 	mouseOutEvents(data,d3.select(this));
 
-		})                   
+		})      
+           
 
     ticks.selectAll(".tick")
     	.data([1880,1900,1920,1940,1960,1980,2000,2020])
@@ -201,7 +202,7 @@ d3.csv('data/timeline.csv', function(data) {
             /*if(viewportWidth < 450 || mobile){
               return "250px";
             }*/
-            return 3480+"px"
+            return (d3.event.pageY)+ 15+"px"
           })
           .style("left",function(d){
             /*if(viewportWidth < 450 || mobile){
