@@ -61,14 +61,42 @@ function ready(error,mens, womens) {
 		console.log(numquads);
 		header = currentdiv.append("div")
 			.attr("class","header")
-		header.append("div")
-			.text(numquads)
-			.attr("class", "numquads")
-		namecountry = header.append("div")
+			
+		quadsdiv = header.append("div")
+			.attr("class","quadsdiv")
+		
+		
+		quadsdiv.append('div')
+				.text(numquads)
+				.attr("class", "numquads")
+		quadjumps = quadsdiv.append('div')
+			.attr("class", "quadjumps")
+		
+		quadjumps.append('span')
+				.text("quad")
+				.attr("class", "quad text")
+		quadjumps.append('span')
+				.text(function() {
+					if (numquads == 1) {
+						return "jump";
+					} else {
+						return "jumps";
+					}
+				})
+				.attr("class", "jumps text")
+				
+				
+
+		namecountrydesc = header.append("div")
+			.attr("class", "namecountrydesc")
+		namecountry = namecountrydesc.append("div")
 			.text(skatername)
 			.attr("class","namecountry")
 		namecountry.append("img")
 			.attr('src', "images/"+ skatercountry+"flag.png")
+		namecountrydesc.append("div")
+			.text(mens[i].desc)
+			.attr("class","desc")
 
 
 		svgdiv = currentdiv.append('div')

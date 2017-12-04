@@ -320,20 +320,74 @@ td.value {
 	display:inline-block;
 	text-align: center;
 	  border:1px solid black;
-	  height: 1.5rem;
-	  width: 1.5rem;
+	  height: 3.25rem;
+	  width: 3.25rem;
     border-radius:5px;
     -webkit-border-radius:100px;
     -moz-border-radius:100px;
     border-width: 2px;
+    font-size: 2.5rem;
+    font-family: Roboto;
 }
-.namecountry {
+.header .namecountrydesc {
 	display: inline-block;
+}
+.namecountrydesc .namecountry {
+	display: block;
+	font-family: Roboto;
+	font-weight: 700;
+}
+.namecountrydesc .desc {
+	display: block;
+	color: #999;
+	font-family: Roboto;
+	font-size: 14px;
 }
 
 .namecountry img {
 	margin-left: 5px;
 }
 .skater-div .header {
+	position:relative;
+	left: 25px;
+	height: 4rem;
+}
+
+.quadsdiv {
+	display: inline-block;
+	height: 3.5rem;
+	width: 9rem;
+}
+
+.quadsdiv .quads {
+	display: blo
+
+}
+
+.quadjumps {
+	width: 5rem;
+	display: inline-block;
+	text-transform: uppercase;
+	font-family: Roboto;
+	color: #999;
+	font-weight: 700;
+
+
+}
+
+.quadjumps {
+	height:3.5rem;
+	
+		
+}
+.quadjumps .quad {
+	display: block;
+	text-align:center;
+	
+}
+
+.quadjumps .jumps {
+	display: block;
+	text-align:center;
 	
 }
