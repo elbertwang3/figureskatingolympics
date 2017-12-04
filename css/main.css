@@ -409,7 +409,23 @@ td.value {
 	
 }
 
-.jumps {
+/*.jumpsdiv {
 	position: relative;
 	top: 2rem;
+}*/
+
+.jumps-tool-tip {
+    position: absolute;
+    font-family: 'Roboto';
+    font-size: 14px;
+    z-index: 1000000000;
+    text-align: left;
+    width: auto;
+    color: #353535;
+    visibility: hidden;
+    pointer-events: all;
+    border: 1px solid rgba(193, 193, 193, 0.8);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+    background: white;
+    padding: 0.4em;
 }

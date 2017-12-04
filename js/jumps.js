@@ -10,12 +10,21 @@ womensjumparray = ['Triple Axel', 'Triple Lutz', 'Triple Flip','Triple Loop', 'T
 revobj = {1 : 'Single', 2 : 'Double', 3 : "Triple", 4 : 'Quad'}
 jumpobj = {'A' : "Axel", "Lz":"Lutz", "F":"Flip", "S":"Sal",'Lo':"Loop", "T":"Toe"}
 
+
+var jumpstooltip = d3.select(".timeline")
+    .append("div")
+    .attr("class","jumps-tool-tip")
+    //.style("transform", "translate(" + margin.left+"px" + "," + margin.top+"px" + ")")
+    .text("4Lz")
+    .on("click",function(){
+      jumpstooltip.style("visibility",null);
+    });
 d3.queue()
     .defer(d3.csv, "data/mens.csv")
     .defer(d3.csv, "data/womens.csv")
     .await(ready);
   
-   
+  
 
 function ready(error,mens, womens) {
 	console.log(mens);
@@ -107,7 +116,7 @@ function ready(error,mens, womens) {
 			.attr('height', jumpsMenHeight)
 
 		
-
+		
 		yaxis = currentsvg.append("g")
 			.attr("class", "y-axis")
 		
@@ -180,9 +189,12 @@ function ready(error,mens, womens) {
 			.attr("class", "jump-sequence")
 			.attr("transform", function(d,i) { return "translate(" + mensXScale(i) + ",0)";})
 			.on('mouseover',function(d) {
+				data = d
+				jumpsmouseOverEvents(data, d3.select(this))
 				d3.select(this).classed("hover", true);
 			})
 			.on('mouseout', function(d) {
+				jumpsmouseOutEvents(data, d3.select(this))
 				d3.select(this).classed("hover", false);
 			})
 		jumpsequence.selectAll("connectors")
@@ -247,6 +259,34 @@ function ready(error,mens, womens) {
 			.attr("font-family", "Roboto")
 	    	.attr("font-size", "12px")
 	    	.attr("text-anchor", "start")
+
+
+
+	    function jumpsmouseOverEvents(data, element) {
+	    	console.log("being called");
+	    	jumpstooltip
+					
+							.text(function () { console.log(data);return data; })
+			jumpstooltip
+          .style("visibility","visible")
+          .style("top",function(d){
+            /*if(viewportWidth < 450 || mobile){
+              return "250px";
+            }*/
+           return (d3.event.pageY)+ 15+"px"
+           //return 3600+"px"
+          })
+          .style("left",function(d){
+            /*if(viewportWidth < 450 || mobile){
+              return "0px";
+            }*/
+            return (d3.event.pageX) +"px";
+          })
+	    }
+	    function jumpsmouseOutEvents(data, element) {
+	    	jumpstooltip
+	       		.style("visibility",null);
+		}
 
 	}
 	for (var i = 0; i < womens.length; i++) {
