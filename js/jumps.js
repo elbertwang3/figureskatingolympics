@@ -37,16 +37,48 @@ function ready(error,mens, womens) {
 		.domain([0,9])
 		.range([jumpsMargin.left+30, jumpsWomenWidth-jumpsMargin.right])
 
+	var goescale = d3.scaleLinear()
+		.domain([-3,3])
+		.range([1,8])
+
 	for (var i = 0; i < mens.length; i++) {
 		skatername = mens[i].skater;
 		skatercountry = mens[i].country;
-		currentsvg = mendiv
+		
+
+		currentdiv = mendiv
 			.append('div')
 			.attr('class', 'skater-div')
-			.append('svg')
+		var numquads = 0
+		for (var key in mens[i]) {
+		    if (mens[i].hasOwnProperty(key)) {
+		    	if (mens[i][key].charAt(0) == "4") {
+		    		numquads += 1
+		    	}
+		       	
+		    }
+		}
+		console.log(numquads);
+		header = currentdiv.append("div")
+			.attr("class","header")
+		header.append("div")
+			.text(numquads)
+			.attr("class", "numquads")
+		namecountry = header.append("div")
+			.text(skatername)
+			.attr("class","namecountry")
+		namecountry.append("img")
+			.attr('src', "images/"+ skatercountry+"flag.png")
+
+
+		svgdiv = currentdiv.append('div')
+			.attr("class", 'svg-div')
+		currentsvg = svgdiv.append('svg')
 			.attr('class', 'skater-svg')
 			.attr('width', jumpsMenWidth)
 			.attr('height', jumpsMenHeight)
+
+		
 
 		yaxis = currentsvg.append("g")
 			.attr("class", "y-axis")
@@ -108,7 +140,9 @@ function ready(error,mens, womens) {
 			.attr('y2', 0);
 
 		var picked = (({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}) => ({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}))(mens[i])
+		//var goes = (({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}) => ({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}))(mens[i])
 		var result = Object.keys(picked).map(function(key) {
+		  //return [picked[key],goes[g+key]];
 		  return picked[key];
 		});
 		jumpsequence = jumpsequences.selectAll(".jump-sequence")
@@ -118,13 +152,49 @@ function ready(error,mens, womens) {
 			.attr("class", "jump-sequence")
 			.attr("transform", function(d,i) { return "translate(" + mensXScale(i) + ",0)";})
 
+
+
 		
 		jumpsequence.selectAll("circle")
 			.data(function(d) { return d.split("+");})
 			.enter()
 			.append("circle")
 			.attr("r", 5)
+			.attr("class", "individual-jump")
 			.attr("cy", function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d)))})
+
+			.style("stroke-width", 1)
+			.on('mouseover',function(d) {
+					d3.select(this).classed("hover", true);
+			})
+			.on('mouseout', function(d) {
+				d3.select(this).classed("hover", false);
+			})
+		jumpsequence.selectAll("connectors")
+			.data(function(d) { 
+
+				var split = d.split("+");
+				
+				if (split.length > 1) { 
+					var toReturn = []
+					for (var j = 0; j < split.length-1; j++) {
+						
+						var combo = split.slice(j, j+2).join("+")
+						toReturn.push(combo)
+					}
+					//console.log(toReturn)
+					return toReturn;
+				} else {
+					return [];
+				}
+			})
+			.enter()
+			.append("line")
+			/*.attr('x1', 0)
+			.attr('y1', function(d) { })
+			.attr('x2', 0)
+			.attr('y2', function(d) { });*/
+						
 
 		programlabels = currentsvg.append("g")
 						.attr("class", "program-labels")

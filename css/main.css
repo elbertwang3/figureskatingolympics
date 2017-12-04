@@ -302,5 +302,38 @@ td.value {
 }
 
 .revolution {
+
+}
+
+.individual-jump {
+	fill: #ccc;
+	stroke:#fff;
+}
+
+.individual-jump.hover {
+	fill: #999;
+	stroke: #000;
+	cursor: pointer;
+}
+
+.numquads {
+	display:inline-block;
+	text-align: center;
+	  border:1px solid black;
+	  height: 1.5rem;
+	  width: 1.5rem;
+    border-radius:5px;
+    -webkit-border-radius:100px;
+    -moz-border-radius:100px;
+    border-width: 2px;
+}
+.namecountry {
+	display: inline-block;
+}
+
+.namecountry img {
+	margin-left: 5px;
+}
+.skater-div .header {
 	
 }
