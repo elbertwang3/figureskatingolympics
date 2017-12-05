@@ -6,10 +6,16 @@ jumpsMargin = {top: 30, bottom: 30, right: 30, left: 60},
 mendiv = d3.select(".jumpsmen"),
 womendiv = d3.select(".jumpswomen"),
 mensjumparray = ['Quad Lutz', 'Quad Flip', 'Quad Loop', 'Quad Sal', 'Quad Toe', 'Triple Axel', 'Triple Lutz', 'Triple Flip','Triple Loop', 'Triple Sal', 'Triple Toe', 'Double Axel', 'Double Loop', 'Double Toe', 'Single Loop'],
+mensbvarray = [13.6,12.3,12,10.5,10.3,8.5,6,5.3,5.1,4.4,4.3,3.3,1.8,1.3,0.5],
 womensjumparray = ['Triple Axel', 'Triple Lutz', 'Triple Flip','Triple Loop', 'Triple Sal', 'Triple Toe', 'Double Axel', 'Double Loop', 'Double Toe', 'Single Loop'],
+womensbvarray = [8.5,6,5.3,5.1,4.4,4.3,3.3,1.8,1.3,0.5],
 revobj = {1 : 'Single', 2 : 'Double', 3 : "Triple", 4 : 'Quad'}
 jumpobj = {'A' : "Axel", "Lz":"Lutz", "F":"Flip", "S":"Sal",'Lo':"Loop", "T":"Toe"}
 
+console.log(mensjumparray.length)
+console.log(mensbvarray.length)
+console.log(womensjumparray.length)
+console.log(womensbvarray.length)
 
 var jumpstooltip = d3.select(".timeline")
     .append("div")
@@ -46,9 +52,10 @@ function ready(error,mens, womens) {
 		.domain([0,9])
 		.range([jumpsMargin.left+30, jumpsWomenWidth-jumpsMargin.right])
 
-	var goescale = d3.scaleLinear()
-		.domain([-3,3])
-		.range([1,8])
+	var goescale = d3.scaleLinear().domain([3,0,-3]).range(["#2161fa","#dddddd","#ff3333"]);
+	var bvscale = d3.scaleLinear().domain([0,13.6]).range([2,10])
+
+
 
 	for (var i = 0; i < mens.length; i++) {
 		skatername = mens[i].skater;
@@ -177,11 +184,21 @@ function ready(error,mens, womens) {
 			.attr('y2', 0);
 
 		var picked = (({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}) => ({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}))(mens[i])
-		//var goes = (({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}) => ({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}))(mens[i])
+		var goes = (({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}) => ({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}))(mens[i])
+		console.log(goes)
+		for (var key in goes) {
+		    if (goes.hasOwnProperty(key)) {
+		    	console.log(goes[key])
+		    	goes[key] = d3.mean(JSON.parse(goes[key])).toFixed(2)
+		    	console.log(goes[key])
+		    }
+		}
+		console.log(goes);
 		var result = Object.keys(picked).map(function(key) {
-		  //return [picked[key],goes[g+key]];
-		  return picked[key];
+		  return [picked[key],goes['g'+key]];
+		  //return picked[key];
 		});
+		console.log(result);
 		jumpsequence = jumpsequences.selectAll(".jump-sequence")
 			.data(result)
 			.enter()
@@ -194,13 +211,14 @@ function ready(error,mens, womens) {
 				d3.select(this).classed("hover", true);
 			})
 			.on('mouseout', function(d) {
+				data = d
 				jumpsmouseOutEvents(data, d3.select(this))
 				d3.select(this).classed("hover", false);
 			})
 		jumpsequence.selectAll("connectors")
 			.data(function(d) { 
-
-				var split = d.split("+");
+				console.log(d[0]);
+				var split = d[0].split("+");
 				
 				if (split.length > 1) { 
 					var toReturn = []
@@ -226,14 +244,24 @@ function ready(error,mens, womens) {
 
 		
 		jumpsequence.selectAll("circle")
-			.data(function(d) { return d.split("+");})
+			.data(function(d) { 
+		
+				split = d[0].split("+")
+				console.log(split)
+				var toReturn = []
+				for (var j = 0; j < split.length; j++) {
+					toReturn.push([split[j],d[1]])
+				}
+				console.log(toReturn);
+				return toReturn;
+			})
 			.enter()
 			.append("circle")
-			.attr("r", 5)
+			.attr("r", function(d) { console.log(d[0]); return bvscale(mensbvarray[mensjumparray.indexOf(jumphelper(d[0]))]);})
 			.attr("class", "individual-jump")
-			.attr("cy", function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d)))})
-
-			.style("stroke-width", 1)
+			.attr("cy", function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d[0])))})
+			.style("fill", function(d) { return goescale(d[1]); })
+			.style("stroke-width", 1.5)
 			
 		
 						
@@ -255,7 +283,7 @@ function ready(error,mens, womens) {
 				}
 				
 			})
-			.attr("y", jumpsMargin.top - 10)
+			.attr("y", jumpsMargin.top - 20)
 			.attr("font-family", "Roboto")
 	    	.attr("font-size", "12px")
 	    	.attr("text-anchor", "start")
@@ -280,7 +308,7 @@ function ready(error,mens, womens) {
             /*if(viewportWidth < 450 || mobile){
               return "0px";
             }*/
-            return (d3.event.pageX) +"px";
+            return (d3.event.pageX) -15+"px";
           })
 	    }
 	    function jumpsmouseOutEvents(data, element) {
@@ -294,8 +322,10 @@ function ready(error,mens, womens) {
 	}
 	
 	function jumphelper(abbrev) {
+		console.log(abbrev)
 		var revs = abbrev.substring(0,1)
 		var jump = abbrev.substring(1)
+
 		return revobj[revs] + " " + jumpobj[jump]
 
 
