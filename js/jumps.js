@@ -12,10 +12,6 @@ womensbvarray = [8.5,6,5.3,5.1,4.4,4.3,3.3,1.8,1.3,0.5],
 revobj = {1 : 'Single', 2 : 'Double', 3 : "Triple", 4 : 'Quad'}
 jumpobj = {'A' : "Axel", "Lz":"Lutz", "F":"Flip", "S":"Sal",'Lo':"Loop", "T":"Toe"}
 
-console.log(mensjumparray.length)
-console.log(mensbvarray.length)
-console.log(womensjumparray.length)
-console.log(womensbvarray.length)
 
 var jumpstooltip = d3.select(".timeline")
     .append("div")
@@ -129,6 +125,9 @@ function ready(error,mens, womens) {
 		
 		horizontallines = currentsvg.append("g")
 			.attr("class", "horizontal-lines")
+
+		skaterimages = currentsvg.append("g")
+			.attr("class", "skater-images")
 		revolutions = yaxis.append("g")
 			.attr("class", "revolutions")
 
@@ -138,6 +137,7 @@ function ready(error,mens, womens) {
 			.attr("class", "jump-sequences")
 
 		currentrev = ""
+
 		revolutions.selectAll('.revolution')
 			.data(mensjumparray)
 			.enter()
@@ -183,17 +183,31 @@ function ready(error,mens, womens) {
 			.attr('x2', jumpsMenWidth)
 			.attr('y2', 0);
 
+		/*skaterimages.selectAll("skater-images-img")
+			.data*/
+		skaterimages.append("img")
+			.data(['images/skaters' + skatername + "sp.png",'images/skaters' + skatername + "fs.png"])
+			.attr("class", "skater-image-img")
+			.attr("transform", function(d,i) { 
+				if (i == 0) {
+					return "translate("+mensXScale(1.5)+"0)";
+				} else if (i == 1) {
+					return "translate("+mensXScale(6.5)+"0)";
+				}
+			})
+				
+
 		var picked = (({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}) => ({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}))(mens[i])
 		var goes = (({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}) => ({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}))(mens[i])
-		console.log(goes)
+
 		for (var key in goes) {
 		    if (goes.hasOwnProperty(key)) {
-		    	console.log(goes[key])
+
 		    	goes[key] = d3.mean(JSON.parse(goes[key])).toFixed(2)
-		    	console.log(goes[key])
+
 		    }
 		}
-		console.log(goes);
+
 		var result = Object.keys(picked).map(function(key) {
 		  return [picked[key],goes['g'+key]];
 		  //return picked[key];
@@ -215,9 +229,8 @@ function ready(error,mens, womens) {
 				jumpsmouseOutEvents(data, d3.select(this))
 				d3.select(this).classed("hover", false);
 			})
-		jumpsequence.selectAll("connectors")
+		jumpsequence.selectAll(".connectors")
 			.data(function(d) { 
-				console.log(d[0]);
 				var split = d[0].split("+");
 				
 				if (split.length > 1) { 
@@ -241,27 +254,75 @@ function ready(error,mens, womens) {
 			.attr('x2', 0)
 			.attr('y2', function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d.split("+")[1])))})
 
-
 		
-		jumpsequence.selectAll("circle")
+		jumpsequence.selectAll(".secondhalfs")
 			.data(function(d) { 
 		
 				split = d[0].split("+")
-				console.log(split)
+
 				var toReturn = []
 				for (var j = 0; j < split.length; j++) {
 					toReturn.push([split[j],d[1]])
 				}
-				console.log(toReturn);
+
 				return toReturn;
 			})
 			.enter()
 			.append("circle")
-			.attr("r", function(d) { console.log(d[0]); return bvscale(mensbvarray[mensjumparray.indexOf(jumphelper(d[0]))]);})
+			.attr("r", function(d) { return bvscale(mensbvarray[mensjumparray.indexOf(jumphelper(d[0]))]) * 1.1;})
+			.attr("class", "secondhalf")
+			.attr("cy", function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d[0])))})
+			//.style("fill","transpare")
+			//.style("stroke-color", function(d) { return goescale(d[1]); })
+			.style("stroke", function(d) { return goescale(d[1]); })
+			.style("stroke-width", 1.5)
+			
+		
+		jumpsequence.selectAll(".individualjumps")
+			.data(function(d) { 
+		
+				split = d[0].split("+")
+	
+				var toReturn = []
+				for (var j = 0; j < split.length; j++) {
+					toReturn.push([split[j],d[1]])
+				}
+
+				return toReturn;
+			})
+			.enter()
+			.append("circle")
+			.attr("r", function(d) { return bvscale(mensbvarray[mensjumparray.indexOf(jumphelper(d[0]))]);})
 			.attr("class", "individual-jump")
 			.attr("cy", function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d[0])))})
 			.style("fill", function(d) { return goescale(d[1]); })
 			.style("stroke-width", 1.5)
+
+
+
+		/*jumpsequence.selectAll(".secondhalfs")
+			.data(function(d) { 
+		
+				split = d[0].split("+")
+
+				var toReturn = []
+				for (var j = 0; j < split.length; j++) {
+					toReturn.push([split[j],d[1]])
+				}
+
+				return toReturn;
+			})
+			.enter()
+			.append("circle")
+			.attr("r", function(d) { return bvscale(mensbvarray[mensjumparray.indexOf(jumphelper(d[0]))]) * 1.1;})
+			.attr("class", "secondhalf")
+			.attr("cy", function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d[0])))})
+			.style("fill","white")
+			//.style("stroke-color", function(d) { return goescale(d[1]); })
+			.style("stroke", "black")
+			.style("stroke-width", 1.5)*/
+
+
 			
 		
 						
@@ -291,10 +352,10 @@ function ready(error,mens, womens) {
 
 
 	    function jumpsmouseOverEvents(data, element) {
-	    	console.log("being called");
+	    
 	    	jumpstooltip
 					
-							.text(function () { console.log(data);return data; })
+							.text(function () { return data; })
 			jumpstooltip
           .style("visibility","visible")
           .style("top",function(d){
@@ -322,7 +383,6 @@ function ready(error,mens, womens) {
 	}
 	
 	function jumphelper(abbrev) {
-		console.log(abbrev)
 		var revs = abbrev.substring(0,1)
 		var jump = abbrev.substring(1)
 
