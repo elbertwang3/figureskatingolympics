@@ -38,7 +38,7 @@ function handleStepEnter(response) {
 	})
 	// update graphic based on step
 	d3.csv('data/jumps.csv', function(data) {
-		
+		//console.log(data[response.index].gif)
 		chart.select('img').attr('src', data[response.index].gif);
 
 	});

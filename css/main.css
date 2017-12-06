@@ -429,3 +429,23 @@ td.value {
     background: white;
     padding: 0.4em;
 }
+
+.skater-div .skater-images {
+	position: relative;
+	pointer-events: none;
+
+}
+
+.skater-div .skater-images img {
+	position: absolute;
+	height: 290px;
+	opacity: 0.3;
+}
+
+.skater-div .skater-images .sp {
+	left: 20%;
+}
+
+.skater-div .skater-images .fs {
+	left: 65%;
+}

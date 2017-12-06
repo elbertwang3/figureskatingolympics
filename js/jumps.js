@@ -110,7 +110,8 @@ function ready(error,mens, womens) {
 			.text(mens[i].desc)
 			.attr("class","desc")
 
-
+		skaterimages = currentdiv.append("div")
+			.attr("class", "skater-images")
 		svgdiv = currentdiv.append('div')
 			.attr("class", 'svg-div')
 		currentsvg = svgdiv.append('svg')
@@ -126,8 +127,14 @@ function ready(error,mens, womens) {
 		horizontallines = currentsvg.append("g")
 			.attr("class", "horizontal-lines")
 
-		skaterimages = currentsvg.append("g")
-			.attr("class", "skater-images")
+		
+			/*.attr("transform", function(d,i) { 
+				if (i == 0) {
+					return "translate("+mensXScale(1.5)+",0)";
+				} else if (i == 1) {
+					return "translate("+mensXScale(6.5)+",0)";
+				}
+			})*/
 		revolutions = yaxis.append("g")
 			.attr("class", "revolutions")
 
@@ -185,16 +192,24 @@ function ready(error,mens, womens) {
 
 		/*skaterimages.selectAll("skater-images-img")
 			.data*/
-		skaterimages.append("img")
-			.data(['images/skaters' + skatername + "sp.png",'images/skaters' + skatername + "fs.png"])
-			.attr("class", "skater-image-img")
-			.attr("transform", function(d,i) { 
+		skaterimages.selectAll(".skaterimages")
+	
+			.data(['images/skaters/' + skatername.split(" ")[0] + "sp.png"])
+			.enter()
+			.append("img")
+			.attr("class", function(d, i) {
 				if (i == 0) {
-					return "translate("+mensXScale(1.5)+"0)";
+					return "skater-image-img sp";
 				} else if (i == 1) {
-					return "translate("+mensXScale(6.5)+"0)";
+					return "skater-image-img fs";
 				}
+				//return "skater-image-img";
+				
 			})
+
+			.attr("src", function(d) { console.log(d); return d;})
+			.style("top", jumpsMargin.top)
+
 				
 
 		var picked = (({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}) => ({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}))(mens[i])
@@ -212,7 +227,7 @@ function ready(error,mens, womens) {
 		  return [picked[key],goes['g'+key]];
 		  //return picked[key];
 		});
-		console.log(result);
+		//console.log(result);
 		jumpsequence = jumpsequences.selectAll(".jump-sequence")
 			.data(result)
 			.enter()
