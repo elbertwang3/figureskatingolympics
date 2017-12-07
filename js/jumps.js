@@ -5,6 +5,7 @@ jumpsMenHeight = 350,
 jumpsMargin = {top: 30, bottom: 30, right: 30, left: 60},
 mendiv = d3.select(".jumpsmen"),
 womendiv = d3.select(".jumpswomen"),
+headerdiv = d3.select(".jumps-header"),
 mensjumparray = ['Quad Lutz', 'Quad Flip', 'Quad Loop', 'Quad Sal', 'Quad Toe', 'Triple Axel', 'Triple Lutz', 'Triple Flip','Triple Loop', 'Triple Sal', 'Triple Toe', 'Double Axel', 'Double Loop', 'Double Toe', 'Single Loop'],
 mensbvarray = [13.6,12.3,12,10.5,10.3,8.5,6,5.3,5.1,4.4,4.3,3.3,1.8,1.3,0.5],
 womensjumparray = ['Triple Axel', 'Triple Lutz', 'Triple Flip','Triple Loop', 'Triple Sal', 'Triple Toe', 'Double Axel', 'Double Loop', 'Double Toe', 'Single Loop'],
@@ -48,12 +49,75 @@ function ready(error,mens, womens) {
 		.domain([0,9])
 		.range([jumpsMargin.left+45, jumpsMenWidth-jumpsMargin.right+15])
 
-	var goescale = d3.scaleLinear().domain([3,0,-3]).range(["#2161fa","#dddddd","#ff3333"]);
-	var bvscale = d3.scaleLinear().domain([0,13.6]).range([2,10])
-	var womensbvscale = d3.scaleLinear().domain([0,8.5]).range([2,10])
+	var goescale = d3.scaleLinear().domain([-3,0,3]).range(["#ff3333","#dddddd","#2161fa"]);
+	var bvscale = d3.scaleLinear().domain([0,13.6]).range([2,13.6])
+	//var womensbvscale = d3.scaleLinear().domain([0,8.5]).range([2,])
+
+	var legendsvg = headerdiv.append("svg")
+					.attr("class", "legend-svg")
+					.attr("width", 1200)
+					.attr("height", 200)
 
 
 
+	legendsvg.append("g")
+	  .attr("class", "legendSize")
+	  .attr("transform", "translate(20, 40)");
+
+	var legendSize = d3.legendSize()
+	  .scale(bvscale)
+	  .shape('circle')
+	  .shapePadding(30)
+	  .labelOffset(20)
+	  .orient('horizontal')
+	  .title("Circle size corresponds with the base value of the element.")
+	  .titleWidth(193);
+
+
+	legendsvg.select(".legendSize")
+	  .call(legendSize);
+
+	legendsvg.append("g")
+	  .attr("class", "legendLinear")
+	  .attr("transform", "translate(300,40)");
+
+	var legendLinear = d3.legendColor()
+		.shape("circle")
+	   .shapePadding(25)
+		  .labelOffset(15)
+	  .orient('horizontal')
+	  .cells(7)
+	  .scale(goescale)
+	   .title("Color corresponds with the average grade of execution (GOE) of the element this season")
+		  .titleWidth(290);
+
+
+
+	legendsvg.select(".legendLinear")
+	  .call(legendLinear);
+
+
+
+	legendsvg.select(".legendLinear .legendCells")
+	  	.attr("transform", "translate(10,43)")
+	legendsvg.select(".legendSize .legendTitle")
+	  	.attr("transform", "translate(96.5,0)")
+	  		 legendsvg.select(".legendLinear .legendTitle")
+	  	.attr("transform", "translate(145,0)")
+
+	 secondhalflegend = legendsvg.append("g")
+		 	.attr("class", "secondhalflegend")
+		 	 .attr("transform", "translate(320,40)")
+		 	 .attr("width",300)
+
+	d3.selectAll(".legend-svg text")
+		.attr("text-anchor", "middle")
+
+	 /*secondhalflegend.append("text")
+	 	.text("elements with a circular border are performed in the second half of a program. Elements performed in the second have receive a 10% bonus.")
+	 	.attr("class", "second-half-title")*/
+
+	secondhalflegend.append("circle")
 	for (var i = 0; i < mens.length; i++) {
 		skatername = mens[i].skater;
 		skatercountry = mens[i].country;
@@ -580,7 +644,7 @@ function ready(error,mens, womens) {
 					for (var j = 0; j < split.length; j++) {
 						toReturn.push([split[j],d[1],d[2]])
 					}
-					console.log(toReturn);
+			
 					return toReturn;
 				} else {
 					return [];
@@ -588,7 +652,7 @@ function ready(error,mens, womens) {
 			})
 			.enter()
 			.append("circle")
-			.attr("r", function(d) { console.log(d); return womensbvscale(womensbvarray[womensjumparray.indexOf(jumphelper(d[0]))]) * 1.1;})
+			.attr("r", function(d) { return bvscale(womensbvarray[womensjumparray.indexOf(jumphelper(d[0]))]) * 1.1;})
 			.attr("class", "secondhalf")
 			.attr("cy", function(d) { return womensYScale(womensjumparray.indexOf(jumphelper(d[0])))})
 			//.style("fill","transpare")
@@ -611,7 +675,7 @@ function ready(error,mens, womens) {
 			})
 			.enter()
 			.append("circle")
-			.attr("r", function(d) { return womensbvscale(womensbvarray[womensjumparray.indexOf(jumphelper(d[0]))]);})
+			.attr("r", function(d) { return bvscale(womensbvarray[womensjumparray.indexOf(jumphelper(d[0]))]);})
 			.attr("class", "individual-jump")
 			.attr("cy", function(d) { return womensYScale(womensjumparray.indexOf(jumphelper(d[0])))})
 			.style("fill", function(d) { return goescale(d[1]); })

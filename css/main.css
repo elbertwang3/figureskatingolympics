@@ -463,3 +463,30 @@ td.value {
 .jumpswomen .skater-div .skater-images .sp {
 	left: 20%;
 }
+
+.legend-svg {
+	font-family: 'Roboto';
+	display: block;
+	margin: auto;
+}
+
+.legendSize circle {
+	fill: #dddddd;
+}
+
+.legend-svg .legendTitle {
+	font-size: 14px;
+	text-align: center;
+}
+
+.legendCells .cell .label {
+	font-size: 12px;
+}
+
+.secondhalflegend .second-half-title {
+	width: 300px;
+}
+
+.skater-div .svg-div .skater-svg {
+	margin: 0 auto;
+}
