@@ -194,7 +194,7 @@ function ready(error,mens, womens) {
 			.data*/
 		skaterimages.selectAll(".skaterimages")
 	
-			.data(['images/skaters/' + skatername.split(" ")[0] + "sp.png"])
+			.data(['images/skaters/' + skatername.split(" ")[0] + "sp.png?xxx=987878787",'images/skaters/' + skatername.split(" ")[0] + "fs.png?xxx=987878787"])
 			.enter()
 			.append("img")
 			.attr("class", function(d, i) {
@@ -207,13 +207,14 @@ function ready(error,mens, womens) {
 				
 			})
 
-			.attr("src", function(d) { console.log(d); return d;})
+			.attr("src", function(d) { return d;})
 			.style("top", jumpsMargin.top)
 
 				
 
 		var picked = (({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}) => ({spj1,spj2,spj3,fsj1,fsj2,fsj3,fsj4,fsj5,fsj6,fsj7,fsj8}))(mens[i])
 		var goes = (({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}) => ({gspj1,gspj2,gspj3,gfsj1,gfsj2,gfsj3,gfsj4,gfsj5,gfsj6,gfsj7,gfsj8}))(mens[i])
+		var secondhalves = mens[i].secondhalf.split(",")
 
 		for (var key in goes) {
 		    if (goes.hasOwnProperty(key)) {
@@ -227,7 +228,10 @@ function ready(error,mens, womens) {
 		  return [picked[key],goes['g'+key]];
 		  //return picked[key];
 		});
-		//console.log(result);
+		for (var z = 0; z < result.length; z++) {
+			result[z].push(secondhalves[z])
+		}
+		
 		jumpsequence = jumpsequences.selectAll(".jump-sequence")
 			.data(result)
 			.enter()
@@ -275,16 +279,21 @@ function ready(error,mens, womens) {
 		
 				split = d[0].split("+")
 
-				var toReturn = []
-				for (var j = 0; j < split.length; j++) {
-					toReturn.push([split[j],d[1]])
+				
+				if (d[2] == "x") {
+					var toReturn = []
+					for (var j = 0; j < split.length; j++) {
+						toReturn.push([split[j],d[1],d[2]])
+					}
+					console.log(toReturn);
+					return toReturn;
+				} else {
+					return [];
 				}
-
-				return toReturn;
 			})
 			.enter()
 			.append("circle")
-			.attr("r", function(d) { return bvscale(mensbvarray[mensjumparray.indexOf(jumphelper(d[0]))]) * 1.1;})
+			.attr("r", function(d) { console.log(d); return bvscale(mensbvarray[mensjumparray.indexOf(jumphelper(d[0]))]) * 1.1;})
 			.attr("class", "secondhalf")
 			.attr("cy", function(d) { return mensYScale(mensjumparray.indexOf(jumphelper(d[0])))})
 			//.style("fill","transpare")
@@ -384,7 +393,7 @@ function ready(error,mens, womens) {
             /*if(viewportWidth < 450 || mobile){
               return "0px";
             }*/
-            return (d3.event.pageX) -15+"px";
+            return (d3.event.pageX) +"px";
           })
 	    }
 	    function jumpsmouseOutEvents(data, element) {
