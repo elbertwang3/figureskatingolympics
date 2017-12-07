@@ -313,6 +313,7 @@ td.value {
 
 .skater-div {
 	display: inline-block;
+	margin: 0 auto;
 }
 
 .revolution {
@@ -452,6 +453,14 @@ td.value {
 	opacity: 0.3;
 }
 
+.jumpsmen {
+	max-width: 1440px;
+	text-align: center;
+}
+.jumpswomen {
+	max-width: 1440px;
+	text-align: center;
+}
 .jumpsmen .skater-div .skater-images .sp {
 	left: 17%;
 }
@@ -479,6 +488,10 @@ td.value {
 	text-align: center;
 }
 
+.legend-svg .second-half-title {
+	font-size: 14px;
+}
+
 .legendCells .cell .label {
 	font-size: 12px;
 }
@@ -487,6 +500,3 @@ td.value {
 	width: 300px;
 }
 
-.skater-div .svg-div .skater-svg {
-	margin: 0 auto;
-}

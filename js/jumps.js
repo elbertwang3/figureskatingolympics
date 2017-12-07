@@ -55,14 +55,14 @@ function ready(error,mens, womens) {
 
 	var legendsvg = headerdiv.append("svg")
 					.attr("class", "legend-svg")
-					.attr("width", 1200)
-					.attr("height", 200)
+					.attr("width", 975)
+					.attr("height", 150)
 
 
 
 	legendsvg.append("g")
 	  .attr("class", "legendSize")
-	  .attr("transform", "translate(20, 40)");
+	  .attr("transform", "translate(20, 20)");
 
 	var legendSize = d3.legendSize()
 	  .scale(bvscale)
@@ -70,7 +70,7 @@ function ready(error,mens, womens) {
 	  .shapePadding(30)
 	  .labelOffset(20)
 	  .orient('horizontal')
-	  .title("Circle size corresponds with the base value of the element.")
+	  .title("Circle size corresponds with the base value of the element")
 	  .titleWidth(193);
 
 
@@ -79,7 +79,7 @@ function ready(error,mens, womens) {
 
 	legendsvg.append("g")
 	  .attr("class", "legendLinear")
-	  .attr("transform", "translate(300,40)");
+	  .attr("transform", "translate(260,20)");
 
 	var legendLinear = d3.legendColor()
 		.shape("circle")
@@ -107,15 +107,32 @@ function ready(error,mens, womens) {
 
 	 secondhalflegend = legendsvg.append("g")
 		 	.attr("class", "secondhalflegend")
-		 	 .attr("transform", "translate(320,40)")
+		 	 .attr("transform", "translate(600,20)")
 		 	 .attr("width",300)
+		 	 .attr("height", 100)
 
 	d3.selectAll(".legend-svg text")
 		.attr("text-anchor", "middle")
 
-	 /*secondhalflegend.append("text")
-	 	.text("elements with a circular border are performed in the second half of a program. Elements performed in the second have receive a 10% bonus.")
-	 	.attr("class", "second-half-title")*/
+	secondhalfcircleslegend = secondhalflegend.append("g")
+		.attr("transform", "translate(20,30)")
+	secondhalfcircleslegend.append("circle")
+		.attr("r", 30)
+		.style("fill", "#878787")
+		.style("stroke", "white")
+		.style("stroke-width", "1.5px")
+	secondhalfcircleslegend.append("circle")
+		.attr("r", 33)
+		.style("stroke", "#878787")
+		.style("fill", "none")
+	 secondhalflegend.append("text")
+	 	.text("Elements with a circular border are performed in the second half of a program. Elements performed in the second half receive a 10% bonus.")
+	 	.attr("transform", "translate(70,10)")
+	 	.attr("class", "second-half-title")
+	 	.attr("dy", "0rem")
+	 	.attr("x", 0)
+	 	.attr("y", 0)
+	 	.call(wrap,300)
 
 	secondhalflegend.append("circle")
 	for (var i = 0; i < mens.length; i++) {
@@ -401,14 +418,12 @@ function ready(error,mens, womens) {
 				}
 				
 			})
-			.attr("y", jumpsMargin.top - 20)
+			.attr("y", jumpsMargin.top - 15)
 			.attr("font-family", "Roboto")
 	    	.attr("font-size", "12px")
-	    	.attr("text-anchor", "start")
 	    	.attr("text-anchor", "middle");
 	}
 	for (var i = 0; i < womens.length; i++) {
-		console.log(womens[i])
 		skatername = womens[i].skater;
 		skatercountry = womens[i].country;
 		
@@ -431,7 +446,7 @@ function ready(error,mens, womens) {
 		       	
 		    }
 		}
-		console.log(numtriples)
+
 		header = currentdiv.append("div")
 			.attr("class","header")
 			
@@ -638,7 +653,7 @@ function ready(error,mens, womens) {
 		
 				split = d[0].split("+")
 
-				console.log(d);
+
 				if (d[2] == "x") {
 					var toReturn = []
 					for (var j = 0; j < split.length; j++) {
@@ -681,7 +696,7 @@ function ready(error,mens, womens) {
 			.style("fill", function(d) { return goescale(d[1]); })
 			.style("stroke-width", 1.5)
 								
-
+			console.log("why arent changes going through")
 		programlabels = currentsvg.append("g")
 						.attr("class", "program-labels")
 		labels = ["short program", "free skate"]
@@ -699,38 +714,38 @@ function ready(error,mens, womens) {
 				}
 				
 			})
-			.attr("y", jumpsMargin.top - 20)
+			.attr("y", jumpsMargin.top-15)
 			.attr("font-family", "Roboto")
 	    	.attr("font-size", "12px")
-	    	.attr("text-anchor", "start")
-	    	.attr("text-anchor", "middle");
+	    	.attr("text-anchor", "middle")
+
+	 
 		
 	}
 	function jumpsmouseOverEvents(data, element) {
 	    
-	    	jumpstooltip
-					
-							.text(function () { return data; })
-			jumpstooltip
-          .style("visibility","visible")
-          .style("top",function(d){
-            /*if(viewportWidth < 450 || mobile){
-              return "250px";
-            }*/
-           return (d3.event.pageY)+ 15+"px"
-           //return 3600+"px"
-          })
-          .style("left",function(d){
-            /*if(viewportWidth < 450 || mobile){
-              return "0px";
-            }*/
-            return (d3.event.pageX) +"px";
-          })
-	    }
-	    function jumpsmouseOutEvents(data, element) {
-	    	jumpstooltip
-	       		.style("visibility",null);
-		}
+    	jumpstooltip
+			.text(function () { return data; })
+		jumpstooltip
+	      .style("visibility","visible")
+	      .style("top",function(d){
+	        /*if(viewportWidth < 450 || mobile){
+	          return "250px";
+	        }*/
+	       return (d3.event.pageY)+ 15+"px"
+	       //return 3600+"px"
+	    })
+	    .style("left",function(d){
+	        /*if(viewportWidth < 450 || mobile){
+	          return "0px";
+	        }*/
+	        return (d3.event.pageX) +"px";
+	    })
+    }
+    function jumpsmouseOutEvents(data, element) {
+    	jumpstooltip
+       		.style("visibility",null);
+	}
 	function jumphelper(abbrev) {
 		var revs = abbrev.substring(0,1)
 		var jump = abbrev.substring(1)
@@ -739,4 +754,28 @@ function ready(error,mens, womens) {
 
 
 	}
+	function wrap(text, width) {
+		console.log(text);
+	  text.each(function() {
+	    var text = d3.select(this),
+	        words = text.text().split(/\s+/).reverse(),
+	        word,
+	        line = [],
+	        lineNumber = 0,
+	        lineHeight = 1.1, // ems
+	        y = text.attr("y"),
+	        dy = parseFloat(text.attr("dy")),
+	        tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+	    while (word = words.pop()) {
+	      line.push(word);
+	      tspan.text(line.join(" "));
+	      if (tspan.node().getComputedTextLength() > width) {
+	        line.pop();
+	        tspan.text(line.join(" "));
+	        line = [word];
+	        tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+	      }
+    	}
+  	});
+}
 }
