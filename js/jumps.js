@@ -696,7 +696,6 @@ function ready(error,mens, womens) {
 			.style("fill", function(d) { return goescale(d[1]); })
 			.style("stroke-width", 1.5)
 								
-			console.log("why arent changes going through")
 		programlabels = currentsvg.append("g")
 						.attr("class", "program-labels")
 		labels = ["short program", "free skate"]
@@ -755,7 +754,6 @@ function ready(error,mens, womens) {
 
 	}
 	function wrap(text, width) {
-		console.log(text);
 	  text.each(function() {
 	    var text = d3.select(this),
 	        words = text.text().split(/\s+/).reverse(),
