@@ -212,6 +212,13 @@ td.value {
 	margin: 0 auto;
 }
 
+.wrprogression svg {
+
+	display: block;
+	margin: 0 auto;
+
+}
+
 .step-container {
 	margin: 0 auto;
 }

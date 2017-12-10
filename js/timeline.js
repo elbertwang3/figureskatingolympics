@@ -215,7 +215,7 @@ d3.csv('data/timeline.csv', function(data) {
     function mouseOutEvents(data, element) {
     	tooltip
        		.style("visibility",null);
-	}
+	  }
 
     	
 })

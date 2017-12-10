@@ -9,7 +9,7 @@ def main(args):
 	file2 = open('data/womenprotocols.csv', 'a')
 	csvreader = csv.reader(file1,delimiter=' ')
 	csvwriter = csv.writer(file2)
-	towrite = ['Mao Asada','Japan','2005 Grand Prix Final','12/17/05']
+	towrite = ['Yuna Kim','South Korea','2010 Winter Olympics','02/25/10']
 	elements = []
 	basevalues = []
 	goeavgs = []
@@ -53,7 +53,7 @@ def main(args):
 		#print goe
 		#print goeavg
 		#print elementtotal
-		assert(len(goeavg) == 13)
+		assert(len(goeavg) == 9)
 		elements.append(element)
 		basevalues.append(basevalue)
 		goeavgs.append(goeavg)

@@ -50,7 +50,7 @@ function ready(error,mens, womens) {
 		.range([jumpsMargin.left+45, jumpsMenWidth-jumpsMargin.right+15])
 
 	var goescale = d3.scaleLinear().domain([-3,0,3]).range(["#ff3333","#dddddd","#2161fa"]);
-	var bvscale = d3.scaleLinear().domain([0,13.6]).range([2,13.6])
+	var bvscale = d3.scaleSqrt().domain([0,13.6]).range([1, 13.6])
 	//var womensbvscale = d3.scaleLinear().domain([0,8.5]).range([2,])
 
 	var legendsvg = headerdiv.append("svg")
@@ -117,12 +117,12 @@ function ready(error,mens, womens) {
 	secondhalfcircleslegend = secondhalflegend.append("g")
 		.attr("transform", "translate(20,30)")
 	secondhalfcircleslegend.append("circle")
-		.attr("r", 30)
+		.attr("r", bvscale(30))
 		.style("fill", "#878787")
 		.style("stroke", "white")
 		.style("stroke-width", "1.5px")
 	secondhalfcircleslegend.append("circle")
-		.attr("r", 33)
+		.attr("r", bvscale(33))
 		.style("stroke", "#878787")
 		.style("fill", "none")
 	 secondhalflegend.append("text")
