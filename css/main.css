@@ -508,3 +508,6 @@ td.value {
 	width: 300px;
 }
 
+.medals .medal {
+  opacity: 0.5;
+}

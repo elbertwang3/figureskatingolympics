@@ -1,6 +1,6 @@
 var wrdiv = d3.select(".wrprogression"),
-wrwidth = 750
-wrheight = 500,
+wrwidth = 1300,
+wrheight = 680,
 wrmargin = {top: 50, left: 50, right: 50, bottom: 50},
 wrsvg = wrdiv.append("svg")
 	.attr("class", "wrsvg svg")
@@ -17,24 +17,35 @@ wrtooltip = d3.select(".wrprogression")
 d3.queue()
     .defer(d3.csv, "data/menswr.csv", cast)
     .defer(d3.csv, "data/womenswr.csv", cast)
+    .defer(d3.csv, "data/mencompetitions2.csv", cast2)
+    .defer(d3.csv, "data/womencompetitions2.csv", cast2)
     .await(ready);
 
-function ready(error,menswr, womenswr) {
+function ready(error,menswr, womenswr, mencompetitions, womencompetitions) {
 	console.log(menswr);
 	console.log(womenswr);
+	console.log(mencompetitions)
+	console.log(womencompetitions)
 
 
 
 	scoreScale = d3.scaleLinear()
-					.domain([180,360])
-					.range([wrheight - wrmargin.bottom, wrmargin.top])
+					.domain([180,340])
+					.range([wrmargin.left, wrwidth - wrmargin.right])
+		
 	wrtimeParse = d3.timeParse("%d %B %Y")
+	wrtimeParse2 = d3.timeParse("%m/%d/%y")
 	wrtimeScale = d3.scaleLinear()
 					.domain([wrtimeParse("01 October 2003"),wrtimeParse("09 February 2018")])
-					.range([wrmargin.left, wrwidth - wrmargin.right])
+					.range([wrheight - wrmargin.bottom, wrmargin.top])
+
+	medalColor = d3.scaleOrdinal()
+					.domain([1,2,3])
+					.range(['#FFD700', "#C0C0C0", "#CD7F32"])
 	var wrline = d3.line()
-		.x(function(d) { return wrtimeScale(wrtimeParse(d['Date']));})
-		.y(function(d) { return scoreScale(d['Score']);})
+	 	.curve(d3.curveLinear)
+		.x(function(d) { return scoreScale(d['Score']);})
+		.y(function(d) { return wrtimeScale(wrtimeParse(d['Date']));})
 
 	xticks = []
 	for (var i = 2004; i < 2019; i++) {
@@ -42,7 +53,7 @@ function ready(error,menswr, womenswr) {
 	}
 	//console.log(xticks)
 	yticks = []
-	for (var i = 180; i <= 360; i+= 20) {
+	for (var i = 190; i <= 340; i+= 20) {
 		yticks.push(i)
 	}
 	//console.log(yticks);
@@ -55,8 +66,8 @@ function ready(error,menswr, womenswr) {
 		.enter()
 		.append("text")
 		.text(function(d) { return d;})
-		.attr('x', wrmargin.left -10)
-    	.attr('y', function(d) { return scoreScale(d); })
+		.attr('x', function(d) { return scoreScale(d); })
+    	.attr('y', wrmargin.bottom -10)
     	.attr("font-family", "Roboto")
     	.attr("font-size", "12px")
     	.attr("text-anchor", "end")
@@ -67,14 +78,14 @@ function ready(error,menswr, womenswr) {
 		.attr("class", "horizontal-lines")
 
 	wrhorizontallines.selectAll("g")
-		.data(yticks)
+		.data(xticks)
 		.enter()
 		.append("line")
 		.attr("class", 'y-axis-lines')
-		.attr("transform", function(d,i) { return "translate(0," + scoreScale(d) + ")";})
+		.attr("transform", function(d,i) { return "translate(0," + wrtimeScale(wrtimeParse(d)) + ")";})
 		.attr('x1', wrmargin.left)
 		.attr('y1', 0)
-		.attr('x2', wrwidth-wrmargin.right)
+		.attr('x2', wrwidth - wrmargin.right)
 		.attr('y2', 0);
 
 	wrxaxis = wrsvg.append('g')
@@ -84,9 +95,9 @@ function ready(error,menswr, womenswr) {
 		.data(xticks)
 		.enter()
 		.append("text")
-		.text(function(d) { return d.split(" ")[2];})
-		.attr('x', function(d) { return wrtimeScale(wrtimeParse(d)); })
-    	.attr('y', wrheight - wrmargin.bottom + 15)
+		.text(function(d) { return  d.split(" ")[2];})
+		.attr('x', wrmargin.left-15)
+    	.attr('y', function(d) { return wrtimeScale(wrtimeParse(d)); })
     	.attr("font-family", "Roboto")
     	.attr("font-size", "12px")
     	.attr("text-anchor", "end")
@@ -101,13 +112,12 @@ function ready(error,menswr, womenswr) {
 	    .attr("fill", "none")
   .attr("stroke", "black");
 
-  var womenspath = wrlines.append('path')
+  /*var womenspath = wrlines.append('path')
 	  .datum(womenswr)
 	    .attr('d', wrline)
 	    .attr("fill", "none")
-  .attr("stroke", "black");
-	      /*'stroke-dasharray': '385 385',
-	      'stroke-dashoffset': 385});*/
+  .attr("stroke", "black");*/
+
 	    
 	var menswrcircles = wrsvg.append('g')
 		.attr("class", "men-wr-circles")
@@ -116,8 +126,8 @@ function ready(error,menswr, womenswr) {
 		.enter()
 		.append('circle')
 		.attr("r", 3)
-		.attr('cx', function(d) { return wrtimeScale(wrtimeParse(d['Date']))})
-		.attr('cy', function(d) { return scoreScale(d['Score'])})
+		.attr('cx',  function(d) { return scoreScale(d['Score'])})
+		.attr('cy', function(d) { return wrtimeScale(wrtimeParse(d['Date']))})
 		.on('mouseover', function(d) {
 			data = d;
 		 
@@ -128,7 +138,7 @@ function ready(error,menswr, womenswr) {
 			data = d;
 			mouseOutEvents(data,d3.select(this));
 		})
-	var womenswrcircles = wrsvg.append('g')
+	/*var womenswrcircles = wrsvg.append('g')
 		.attr("class", "women-wr-circles")
 	womenswrcircles.selectAll('g')
 		.data(womenswr)
@@ -146,23 +156,26 @@ function ready(error,menswr, womenswr) {
 		.on('mouseout', function(d) {
 			data = d;
 			mouseOutEvents(data,d3.select(this));
-		})
+		})*/
 
-	  /*.transition()
-	    .duration(1500)
-	    .attr('stroke-dashoffset', 0)*/
+	 var medalsgroup = wrsvg.append('g')
+	 	.attr("class", "medals")
 
-	/*var womenspath = wrlines.append('path')
-	  .datum([womenswr])
-	    .attr({
-	      'd': wrline,
-	      'stroke-dasharray': '385 385',
-	      'stroke-dashoffset': 385
-	    })
-	    .attr("stroke", "black")
-	  .transition()
-	    .duration(1500)
-	    .attr('stroke-dashoffset', 0)*/
+	 var medals = medalsgroup.selectAll('g')
+	 	.data(mencompetitions)
+	 	.enter()
+	 	.append('g')
+
+	 medals.append("circle")
+	 	.attr("class","medal")
+	 	.attr("cx", function(d) {  return scoreScale(d.combined)})
+	 	.attr("cy", function(d) {  return wrtimeScale(wrtimeParse2(d.date)); })
+	 	.attr('r', 5)
+
+	 	.style('fill', function(d) {  return medalColor(d.rank);})
+	 	.style("stroke", function(d) {  console.log(medalColor(d.rank)); return d3.color(medalColor(d.rank)).darker();})
+	
+
 	function mouseOverEvents(data, element) {
  
     	var tooltipcontainer = wrtooltip.append("div");
@@ -223,5 +236,18 @@ function cast(d) {
   	Country: d['Country'],
    	Score: +d['Score'],
    	Event: d['Event']
+  };
+}
+
+function cast2(d) {
+  return {
+  	date: d['date'],
+  	name: d['name'],
+  	country: d['country'],
+   	combined: +d['combined'],
+   	sp: +d['sp'],
+   	fs: +d['fs'],
+   	competition: d['competition'],
+   	rank: +d['rank']
   };
 }
