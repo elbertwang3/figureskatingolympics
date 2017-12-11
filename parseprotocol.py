@@ -13,7 +13,7 @@ def main(args):
 	elements = []
 	basevalues = []
 	goeavgs = []
-	print csvreader
+	
 	for row in csvreader:
 		print row
 		if "x" in row:
