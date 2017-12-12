@@ -165,7 +165,7 @@ d3.csv('data/timeline.csv', function(data) {
 
       	tooltipcontainer.append("div")
 						.attr("class", "skater-name")
-						.text(function () { return data.skater + "      "; })
+						.text(function () { return data.skater; })
 						.append("img")
 						.attr('src', function(d) { return "images/"+ data.country+"flag.png"; });
       	tooltipcontainer.append("div")

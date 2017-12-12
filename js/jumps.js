@@ -14,11 +14,10 @@ revobj = {1 : 'Single', 2 : 'Double', 3 : "Triple", 4 : 'Quad'}
 jumpobj = {'A' : "Axel", "Lz":"Lutz", "F":"Flip", "S":"Sal",'Lo':"Loop", "T":"Toe"}
 
 
-var jumpstooltip = d3.select(".timeline")
+var jumpstooltip = d3.select(".jumpsdiv")
     .append("div")
     .attr("class","jumps-tool-tip")
     //.style("transform", "translate(" + margin.left+"px" + "," + margin.top+"px" + ")")
-    .text("4Lz")
     .on("click",function(){
       jumpstooltip.style("visibility",null);
     });
@@ -483,7 +482,7 @@ function ready(error,mens, womens) {
 		namecountry.append("img")
 			.attr('src', "images/"+ skatercountry+"flag.png")
 		namecountrydesc.append("div")
-			.text(mens[i].desc)
+			.text(womens[i].desc)
 			.attr("class","desc")
 
 		skaterimages = currentdiv.append("div")
@@ -722,9 +721,40 @@ function ready(error,mens, womens) {
 		
 	}
 	function jumpsmouseOverEvents(data, element) {
-	    
-    	jumpstooltip
-			.text(function () { return data; })
+	    console.log(data.slice(0,2))
+	     jumpstooltip.selectAll("div").remove();
+	    jumpstooltipheaderrow = jumpstooltip
+    		.append('div')
+    		.attr('class', 'jumps-tooltip-header-row')
+
+    	jumpstooltipheaderrow.selectAll('.jumps-tooltip-col-header')
+    		.data(data.slice(0,2))
+    		.enter()
+    		.append('div')
+    		.attr("class","jumps-tooltip-col-header")
+    		.text(function (d,i) { 
+    			if (i == 0) {
+    				return 'jump'
+    			}
+    			else if (i==1) {
+    				return 'GOE'
+    			}
+    		})
+    	  jumpstooltiprow = jumpstooltip
+    		.append('div')
+    		.attr('class', 'jumps-tooltip-row')
+    	console.log(data.slice(0,2))
+    	jumpstooltiprow.selectAll('.jumps-tooltip-col')
+    		.data(data.slice(0,2))
+    		.enter()
+    		.append('div')
+    		.attr("class","jumps-tooltip-col")
+    	
+    		.text(function (d,i) { 
+    			return d;
+    		})
+    	
+    		
 		jumpstooltip
 	      .style("visibility","visible")
 	      .style("top",function(d){

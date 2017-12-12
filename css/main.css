@@ -510,4 +510,129 @@ td.value {
 
 .medals .medal {
   opacity: 0.5;
+
+}
+.medals .medal.hover {
+  cursor: pointer;
+   stroke-width: 2px;
+}
+
+.histogram-chart-toggle-item{
+       margin-right: 10px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 14px;
+    border: 1px solid rgb(218, 217, 227);
+    color: black;
+    cursor: pointer;
+    /* border: solid 1px rgba(127, 125, 156, 0.75); */
+    padding: 0px 7px;
+    /* box-shadow: inset 0 1px 2px rgba(0,0,0,0.08); */
+    margin-left: -13px;
+    background: white;
+    text-align: center;
+    line-height: 23px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #fff;
+    /* height: 28px; */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.top-row-chart-toggle-wrapper{
+    right: 0px;
+    top: 70px;
+    margin: 0 auto;
+    width: 80px;
+    left: 0px;
+    /* -webkit-transform: translate(105px,0px); */
+    transform: translate(29px,0px);
+    /* display: none; */
+  }
+ .toggle-selected {
+    font-weight: 500;
+    background-color: #F5F5F5;
+    color: black;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    border-color: #dad9e3;
+}
+  .histogram-chart-toggle-type{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+  /* display: none; */
+  position: absolute;
+  left: 0px;
+}
+ .front-curve {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.back-curve {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.wr-y-axis text {
+  font-family: "Roboto";
+  font-size: 12px;
+      
+}
+
+.wrlines path {
+    stroke: #808080;
+    stroke-width: 1px;
+    stroke-dasharray: 5px 5px;
+    shape-rendering: crispEdges;
+
+}
+.wr-circles circle {
+  fill: #878787;
+
+}
+.wr-circles circle.hover {
+  stroke: black;
+
+}
+
+.wr-annotation {
+  font-family: 'Roboto';
+  color: #535353;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight:900;
+}
+
+.timeline-tool-tip img {
+  margin-left: 7.5px;
+}
+.jumps-tooltip-row {
+  display: block;
+  width: 140px;
+}
+.jumps-tooltip-col-header {
+
+  display: inline-block;
+  width: 70px;
+    border-bottom: 1px solid #cccccc;
+    text-align:center;
+
+}
+.jumps-tooltip-col {
+
+  display: inline-block;
+  width: 70px;
+   text-align:center;
 }
