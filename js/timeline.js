@@ -86,14 +86,22 @@ d3.csv('data/timeline.csv', function(data) {
 		})  
 		.on("click", function(d) {
 			//mouseOutEvents(data,d3.select(this));
+      d3.select(".no-footage")
+        .remove()
 			data = d;
 			d3.selectAll(".skater .item").classed("is-playing", false);
 			d3.select(this).classed("is-playing", true);
 			d3.select(".video #player")
 				.attr("src", function (d) {
 					if (data.url != "") {
+            console.log("found url")
 						return data.url;
-					}
+					} else {
+            console.log("getting here")
+            d3.select(".video").append('p')
+              .text("No footage of this skater could be found.")
+              .attr("class", "no-footage")
+          }
 				})
 			d3.select(".name-label").text(function () { return data.skater + "      "; })
 						.append("img")

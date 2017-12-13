@@ -10,12 +10,6 @@ body {
     padding: 0;
 }
 
-/*.loaded-canela .tk-canela {
-    font-family: 'Canela Web',Georgia,Times,serif
-}
-.loaded-atlas .tk-atlas {
-    font-family: 'Atlas Grotesk Web',Helvetica,Arial,sans-serif;
-}*/
 
 .intro {
   /* margin: 5rem auto 9rem; */
@@ -29,7 +23,7 @@ body {
   flex-direction: column;
   -webkit-justify-content: center;
   justify-content: center;
-  margin-bottom: 5rem;
+  margin: 0 auto 3rem auto;
 }
 
 .smaller-head {
@@ -42,32 +36,85 @@ body {
     text-align: center;
     color: white;
     line-height: 1;
-    margin-bottom: 1rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing:grayscale;
 }
 
 .intro-headline {
+  font-family: "Merriweather";
+  font-weight: 400;
   max-width: 50rem;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto;
   padding: 0 1rem;
   text-align: center;
-  line-height: 1;
-  font-weight: bold;
-  font-size: 8rem;
-  font-weight: 100;
+  line-height: 1.3;
+  font-size: 6.5rem;
   text-transform: capitalize;
   color: white;
 }
 
 h2 {
 	text-align: center;
-	font-weight: bold;
-	font-size: 3rem;
+	font-size: 2rem;
 	text-transform: capitalize;
+  font-family: 'Merriweather';
+  font-weight: 700;   
+   -webkit-margin-before: 1.5em;
+    -webkit-margin-after: 0.83em;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+h3 {
+    font-family: 'Roboto';
+  font-weight: 900;
+  font-style: normal;
+}
 
+h4 {
+  text-align: center;
+  font-size: 2rem;
+  text-transform: capitalize;
+  font-family: 'Merriweather';
+  font-weight: 700;   
+   -webkit-margin-before: 1em;
+    -webkit-margin-after: 0.5em;
+}
+
+h5 {
+      -webkit-margin-after: 0em;
+}
+
+.paragraph {
+  font-family: 'Georgia';
+  font-size: 1rem
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 1.7;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 38rem;
+  text-align: left;
+  
+}
+.caption {
+  font-family: 'Open Sans';
+  font-size: 0.9rem;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 1.7;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 38rem;
+}
+.prose {
+  max-width: 55rem;
+  padding: 0 1 rem;
+  margin: 0 auto;
+}
 
 
 .intro-byline {
@@ -179,7 +226,6 @@ table tbody {
 .jump-name {
 	text-align: center;
     text-transform: uppercase;
-	font-weight: bold;
 	font-size: 2.5rem;
 	text-transform: capitalize;
 }
@@ -279,6 +325,7 @@ td.value {
 	margin: 0 auto;
 	font-family: 'Roboto';
 	margin-bottom: 0px;
+  margin-top: 2rem;
 
 }
 
@@ -548,14 +595,12 @@ td.value {
     user-select: none;
 }
 
-.top-row-chart-toggle-wrapper{
-    right: 0px;
-    top: 70px;
+.histogram-chart-toggle-wrapper{
+    
     margin: 0 auto;
     width: 80px;
-    left: 0px;
+  
     /* -webkit-transform: translate(105px,0px); */
-    transform: translate(29px,0px);
     /* display: none; */
   }
  .toggle-selected {
@@ -570,10 +615,7 @@ td.value {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  position: relative;
   /* display: none; */
-  position: absolute;
-  left: 0px;
 }
  .front-curve {
     border-top-left-radius: 3px;
@@ -636,3 +678,4 @@ td.value {
   width: 70px;
    text-align:center;
 }
+

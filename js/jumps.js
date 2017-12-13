@@ -52,10 +52,10 @@ function ready(error,mens, womens) {
 	var bvscale = d3.scaleSqrt().domain([0,13.6]).range([1, 13.6])
 	//var womensbvscale = d3.scaleLinear().domain([0,8.5]).range([2,])
 
-	var legendsvg = headerdiv.append("svg")
+	var legendsvg = mendiv.append("svg")
 					.attr("class", "legend-svg")
 					.attr("width", 975)
-					.attr("height", 150)
+					.attr("height", 125)
 
 
 
@@ -761,14 +761,14 @@ function ready(error,mens, womens) {
 	        /*if(viewportWidth < 450 || mobile){
 	          return "250px";
 	        }*/
-	       return (d3.event.pageY)+ 15+"px"
+	       return (d3.event.pageY)+ 20+"px"
 	       //return 3600+"px"
 	    })
 	    .style("left",function(d){
 	        /*if(viewportWidth < 450 || mobile){
 	          return "0px";
 	        }*/
-	        return (d3.event.pageX) +"px";
+	        return (d3.event.pageX-100) +"px";
 	    })
     }
     function jumpsmouseOutEvents(data, element) {
