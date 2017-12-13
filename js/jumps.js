@@ -569,7 +569,7 @@ function ready(error,mens, womens) {
 			.data*/
 		skaterimages.selectAll(".skaterimages")
 	
-			.data(['images/skaters/' + skatername.split(" ")[0] + "sp.png?xxx=987878787",'images/skaters/' + skatername.split(" ")[0] + "fs.png?xxx=987878787"])
+			.data(['images/skaters/' + skatername.split(" ")[0] + "sp.png",'images/skaters/' + skatername.split(" ")[0] + "fs.png"])
 			.enter()
 			.append("img")
 			.attr("class", function(d, i) {
