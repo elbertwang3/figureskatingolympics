@@ -23,9 +23,9 @@ function handleResize() {
 	var chartMargin = 32;
 	var textWidth = text.node().offsetWidth;
 	var chartWidth = graphic.node().offsetWidth - textWidth - chartMargin;
-	/*chart
+	chart
 		.style('width', chartWidth + 'px')
-		.style('height', Math.floor(window.innerHeight/2) + 'px');*/
+		.style('height', Math.floor(window.innerHeight/2) + 'px');
 	// 3. tell scrollama to update new element dimensions
 	scroller.resize();
 }
