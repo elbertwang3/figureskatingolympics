@@ -2,7 +2,8 @@ var jumpsWomenWidth = 450,
 jumpsMenWidth = 470,
 jumpsWomenHeight = 300,
 jumpsMenHeight = 350,
-jumpsMargin = {top: 30, bottom: 30, right: 30, left: 60},
+jumpsAspect = jumpsMenWidth / jumpsMenHeight,
+jumpsMargin = {top: 30, bottom: 30, right: 30, left: 45},
 mendiv = d3.select(".jumpsmen"),
 womendiv = d3.select(".jumpswomen"),
 headerdiv = d3.select(".jumps-header"),
@@ -12,6 +13,17 @@ womensjumparray = ['Triple Axel', 'Triple Lutz', 'Triple Flip','Triple Loop', 'T
 womensbvarray = [8.5,6,5.3,5.1,4.4,4.3,3.3,1.8,1.3,0.5],
 revobj = {1 : 'Single', 2 : 'Double', 3 : "Triple", 4 : 'Quad'}
 jumpobj = {'A' : "Axel", "Lz":"Lutz", "F":"Flip", "S":"Sal",'Lo':"Loop", "T":"Toe"}
+
+$(window).on("resize", function() {
+	console.log('resized here')
+	if ($(window).width() < 470) {
+		console.log("getting here")
+		jumpsMenWidth = $(window).width() - 50
+		console.log(jumpsMenWidth)-100;
+	
+
+	}
+})
 
 
 var jumpstooltip = d3.select(".jumpsdiv")
@@ -29,8 +41,7 @@ d3.queue()
   
 
 function ready(error,mens, womens) {
-	console.log(mens);
-	console.log(womens);
+
 
 	var mensYScale = d3.scaleLinear()
 		.domain([0,mensjumparray.length-1]) //gonna need to use indexof on jumparray to get this value
@@ -52,10 +63,13 @@ function ready(error,mens, womens) {
 	var bvscale = d3.scaleSqrt().domain([0,13.6]).range([1, 13.6])
 	//var womensbvscale = d3.scaleLinear().domain([0,8.5]).range([2,])
 
+	var legendWidth = 975,
+	legendHeight = 125
 	var legendsvg = mendiv.append("svg")
+	 .attr("viewBox", "0 0 " + (legendWidth) + " " + (legendHeight))
 					.attr("class", "legend-svg")
-					.attr("width", 975)
-					.attr("height", 125)
+					.attr("width", legendWidth)
+					.attr("height", legendHeight)
 
 
 
@@ -721,7 +735,6 @@ function ready(error,mens, womens) {
 		
 	}
 	function jumpsmouseOverEvents(data, element) {
-	    console.log(data.slice(0,2))
 	     jumpstooltip.selectAll("div").remove();
 	    jumpstooltipheaderrow = jumpstooltip
     		.append('div')
@@ -743,7 +756,6 @@ function ready(error,mens, womens) {
     	  jumpstooltiprow = jumpstooltip
     		.append('div')
     		.attr('class', 'jumps-tooltip-row')
-    	console.log(data.slice(0,2))
     	jumpstooltiprow.selectAll('.jumps-tooltip-col')
     		.data(data.slice(0,2))
     		.enter()
@@ -806,4 +818,16 @@ function ready(error,mens, womens) {
     	}
   	});
 }
+var legendchart = $(".legend-svg"),
+    legendaspect = legendchart.width() / legendchart.height();
+     legendcontainer = legendchart.parent();
+$(window).on("resize", function() {
+  var targetWidth = legendcontainer.width();
+   if (targetWidth > 900) {
+      targetWidth = 900;
+   }
+    legendchart.attr("width", targetWidth);
+    legendchart.attr("height", Math.round(targetWidth / legendaspect));
+}).trigger("resize");
 }
+

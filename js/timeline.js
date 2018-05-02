@@ -2,9 +2,10 @@ var timelineWidth = 600,
 timelineHeight = 140,
 timelineMargin = {top: 30, bottom: 30, right: 30, left: 60},
 timelinesvg = d3.select(".timeline").append("svg")
+ .attr("viewBox", "0 0 " + (timelineWidth) + " " + (timelineHeight))
 	.attr("width", timelineWidth)
 	.attr("height", timelineHeight)
-
+  .attr("class", "timelinesvg")
 var jumpmap = {"single" : 1, "double" : 2, "triple" : 3, "quadruple" : 4};
 var yaxislines = timelinesvg.append('g')
 		.attr("class", "y-axis")
@@ -227,3 +228,16 @@ d3.csv('data/timeline.csv', function(data) {
 
     	
 })
+
+var timelinechart = $(".timelinesvg"),
+    timelineaspect = timelinechart.width() / timelinechart.height(),
+     timelinecontainer = timelinechart.parent();
+$(window).on("resize", function() {
+
+   var targetWidth = timelinecontainer.width();
+   if (targetWidth > 600) {
+      targetWidth = 600;
+   }
+    timelinechart.attr("width", targetWidth);
+    timelinechart.attr("height", Math.round(targetWidth / timelineaspect));
+}).trigger("resize");

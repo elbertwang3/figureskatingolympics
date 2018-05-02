@@ -7,6 +7,7 @@ toggles = wrdiv.append("div")
 prevcut = "",
 cut = "Men",
 wrsvg = wrdiv.append("svg")
+ .attr("viewBox", "0 0 " + (wrwidth) + " " + (wrheight))
 	.attr("class", "wrsvg svg")
 	.attr("width", wrwidth)
 	.attr("height", wrheight);
@@ -26,10 +27,7 @@ d3.queue()
     .await(ready);
 
 function ready(error,menswr, womenswr, mencompetitions, womencompetitions) {
-	console.log(menswr);
-	console.log(womenswr);
-	console.log(mencompetitions)
-	console.log(womencompetitions)
+
 
 	toggles
     .append("div")
@@ -156,7 +154,6 @@ function ready(error,menswr, womenswr, mencompetitions, womencompetitions) {
 		.y(function(d) { return wrtimeScale(wrtimeParse(d['Date']));})
    	var wrlines = wrsvg.append('g')
    		.attr("class", "wrlines")
-   	console.log(menswr[0])
    	wrlines.append('g')
    		.datum(menswr[0])
    		.append('text')
@@ -579,3 +576,17 @@ function cast2(d) {
    	rank: +d['rank']
   };
 }
+
+var wrchart = $(".wrsvg"),
+    wraspect = wrchart.width() / wrchart.height(),
+       wrcontainer = wrchart.parent();
+$(window).on("resize", function() {
+
+	 var targetWidth = wrcontainer.width();
+	 if (targetWidth > 1300) {
+      targetWidth = 1300;
+   }
+ 
+    wrchart.attr("width", targetWidth);
+    wrchart.attr("height", Math.round(targetWidth / wraspect));
+}).trigger("resize");

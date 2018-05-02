@@ -10,22 +10,45 @@ var scroller = scrollama();
 function handleResize() {
 	// 1. update height of step elements
 	var stepWidth = Math.floor(window.innerWidth/2.5);
-	step.style('width', stepWidth + 'px');
+	step.style('max-width', stepWidth + 'px');
 	var stepHeight = Math.floor(window.innerHeight/1.4);
 	step.style('height', stepHeight + 'px');
+	aspect = 0.8
+	if (window.innerWidth/2 < 720) {
+		step.style('max-width', window.innerWidth/2.3 + 'px');
+		step.style('height',  + window.innerWidth/2.3/aspect + 'px');
+
+	} else {
+		step.style('max-width', stepWidth + 'px');
+		step.style('height',  + stepHeight + 'px');
+		step.style("margin", "0 auto")
+	}
+	if  (window.innerWidth < 900) {
+		step.style("margin-right", "0px")
+		step.style("margin-left", "0.2rem")
+	}
 	// 2. update width/height of graphic element
 	var bodyWidth = d3.select('body').node().offsetWidth;
+
 	graphic
-		.style('width', bodyWidth + 'px')
+		.style('max-width', bodyWidth + 'px')
 		.style('height', window.innerHeight + 'px');
 
 
 	var chartMargin = 32;
 	var textWidth = text.node().offsetWidth;
 	var chartWidth = graphic.node().offsetWidth - textWidth - chartMargin;
-	chart
-		.style('width', chartWidth + 'px')
+	if (window.innerWidth/2 < 720) {
+		chart
+		.style('max-width', window.innerWidth/2.3 + 'px')
 		.style('height', Math.floor(window.innerHeight/2) + 'px');
+	} else {
+		chart
+		.style('width', chartWidth + 'px')
+		.style('height', Math.floor(window.innerHeight/2) + 'px')
+
+	}
+	
 	// 3. tell scrollama to update new element dimensions
 	scroller.resize();
 }
