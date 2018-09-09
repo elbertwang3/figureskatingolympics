@@ -232,12 +232,15 @@ d3.csv('data/timeline.csv', function(data) {
 var timelinechart = $(".timelinesvg"),
     timelineaspect = timelinechart.width() / timelinechart.height(),
      timelinecontainer = timelinechart.parent();
-$(window).on("resize", function() {
+ window.addEventListener('resize', resize)
 
-   var targetWidth = timelinecontainer.width();
+function resize() {   
+  var targetWidth = timelinecontainer.width();
    if (targetWidth > 600) {
       targetWidth = 600;
    }
     timelinechart.attr("width", targetWidth);
     timelinechart.attr("height", Math.round(targetWidth / timelineaspect));
-}).trigger("resize");
+}
+
+resize()
